@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:edupauee/views/juegos.dart';
-import 'package:edupauee/views/comic.dart';
-import 'package:edupauee/views/challenges.dart';
-import 'package:edupauee/views/acerca_de.dart';
-import 'package:edupauee/views/explorar.dart';
-import 'package:edupauee/views/intro_page.dart';
-import 'package:edupauee/views/video.dart';
+
+import 'package:edupauee/About/about_view.dart';
+import 'package:edupauee/Challenges/challenges_view.dart';
+import 'package:edupauee/Comic/comic_view.dart';
+import 'package:edupauee/Explorar/explorarVideo_view.dart';
+import 'package:edupauee/Juegos/juego_view.dart';
+import 'package:edupauee/OnBoarding/onBoarding_view.dart';
+import 'package:edupauee/Explorar/explorar_view.dart';
 
 class Router {
   static Route<dynamic> generateRoute(RouteSettings settings) {

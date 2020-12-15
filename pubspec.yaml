@@ -67,7 +67,8 @@ flutter:
     - assets/images/juego2.png
     - assets/images/comic.png
     - assets/images/challegeConductividad.png
-    - videos/migato.mp4
+    - assets/stores.json
+    - assets/videos.json
     
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
