@@ -16,7 +16,7 @@ class _MyAppState extends State<MyApp> {
   List<Widget> routesDataNavigationBar = [
     Explorar(),
     Juegos(),
-    Comic(),
+    Comics(),
     Challenges(),
     About()
   ];

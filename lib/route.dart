@@ -19,7 +19,7 @@ class Router {
       case 'juegos':
         return MaterialPageRoute(builder: (_) => Juegos());
       case 'comic':
-        return MaterialPageRoute(builder: (_) => Comic());
+        return MaterialPageRoute(builder: (_) => Comics());
       case 'challenges':
         return MaterialPageRoute(builder: (_) => Challenges());
       case 'about':

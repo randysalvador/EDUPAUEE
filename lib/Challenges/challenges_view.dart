@@ -37,37 +37,38 @@ class Challenges extends StatelessWidget {
                 return ListView.builder(
                   itemCount: challenges.length,
                   itemBuilder: (context, index) => Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Stack(
-                        children: [
-                          Container(
-                            padding: EdgeInsets.all(10.0),
-                            color: Color(0xFF1F2430),
-                            width: 360,
-                            height: 210,
-                            child: Stack(
-                              children: <Widget>[
-                                Positioned(
-                                  top: 25.5,
-                                  child: ImagenChallege(
-                                    urlImage: snapshot.data[index].cover,
-                                  ),
+                    padding: const EdgeInsets.all(8.0),
+                    child: Stack(
+                      children: [
+                        Container(
+                          padding: EdgeInsets.all(10.0),
+                          color: Color(0xFF1F2430),
+                          width: 360,
+                          height: 210,
+                          child: Stack(
+                            children: <Widget>[
+                              Positioned(
+                                top: 25.5,
+                                child: ImagenChallege(
+                                  urlImage: snapshot.data[index].cover,
                                 ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
-                          Container(
-                            padding: EdgeInsets.fromLTRB(22, 65, 10, 10),
-                            child: Text(
-                              snapshot.data[index].title,
-                              style: GoogleFonts.poppins(
-                                  fontSize: 25,
-                                  color: Color(0xFFFFFFFF),
-                                  fontWeight: FontWeight.bold),
-                            ),
+                        ),
+                        Container(
+                          padding: EdgeInsets.fromLTRB(22, 65, 10, 10),
+                          child: Text(
+                            snapshot.data[index].title,
+                            style: GoogleFonts.poppins(
+                                fontSize: 25,
+                                color: Color(0xFFFFFFFF),
+                                fontWeight: FontWeight.bold),
                           ),
-                        ],
-                      )),
+                        ),
+                      ],
+                    ),
+                  ),
                 );
               } else {
                 return Center(child: CircularProgressIndicator());

@@ -1,24 +1,75 @@
+import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-//import 'package:get/get.dart';
-class Comic extends StatefulWidget {
-  @override
-  _ComicState createState() => _ComicState();
-}
+import 'package:get/get.dart';
 
-class _ComicState extends State<Comic> {
+import 'package:edupauee/Comic/comic_controller.dart';
+import 'package:edupauee/Comic/comic_model.dart';
+
+class Comics extends StatelessWidget {
+  final ComicController comicController =
+      Get.put<ComicController>(ComicController());
+  final int id_comic;
+
+  Comics({Key key, this.id_comic});
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: titulo(context),
+    return GetBuilder<ComicController>(
+      init: comicController,
+      builder: (_) => Scaffold(
         backgroundColor: Color(0xFF1F2430),
-        elevation: 0,
+        appBar: AppBar(
+          title: titulo(context),
+          backgroundColor: Color(0xFF1F2430),
+          elevation: 0,
+        ),
+        body: GestureDetector(
+          onTap: () {
+            print("press");
+          },
+          child: FutureBuilder(
+            future: _.getComicById(id_comic),
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                List<Comic> comic = snapshot.data ?? [];
+                return ListView.builder(
+                  itemCount: comic.length,
+                  itemBuilder: (context, index) => Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Stack(
+                      children: [
+                        Container(
+                          width: 367,
+                          height: 684,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Card(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(15.0),
+                                ),
+                                child: ImagenComic(
+                                  urlImage: snapshot.data[index].cover,
+                                ),
+                                color: Color(0xFF000000),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                );
+              } else {
+                return Center(child: CircularProgressIndicator());
+              }
+            },
+          ),
+        ),
       ),
-      body: catalogo(context),
-      backgroundColor: Color(0xFF1F2430),
     );
   }
 }
@@ -49,36 +100,18 @@ Widget titulo(BuildContext context) {
   );
 }
 
-Widget catalogo(BuildContext context) {
-  return Container(
-    width: 367,
-    height: 684,
-    child: Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Card(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(15.0),
-          ),
-          child: ImagenComic(),
-          color: Color(0xFF000000),
-        ),
-      ],
-    ),
-  );
-}
-
 class ImagenComic extends StatelessWidget {
+  final urlImage;
+
+  const ImagenComic({Key key, this.urlImage}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    AssetImage assetImage = AssetImage('assets/images/comic.png');
-    Image image = Image(
-      image: assetImage,
-      width: 327,
-      height: 564,
-    );
     return Container(
-      child: image,
+      child: Image.network(
+        urlImage,
+        width: 345,
+        height: 157,
+      ),
     );
   }
 }

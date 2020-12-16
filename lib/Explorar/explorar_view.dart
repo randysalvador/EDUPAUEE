@@ -21,32 +21,6 @@ class Explorar extends StatelessWidget {
   }
 }
 
-Widget titulo(BuildContext context) {
-  return Column(
-    children: <Widget>[
-      Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Container(
-            child: Text('EDU',
-                style: GoogleFonts.bangers(
-                    fontSize: 40, color: Color(0XFFFF6B3D))),
-          ),
-          Container(
-            child: Text(
-              ' PAUEE',
-              style: GoogleFonts.bangers(
-                fontSize: 40,
-                color: Color(0xFFFFFFFF),
-              ),
-            ),
-          ),
-        ],
-      ),
-    ],
-  );
-}
-
 Widget cardWidget(BuildContext context) {
   return Column(
     children: <Widget>[
@@ -111,17 +85,44 @@ Widget cardWidget(BuildContext context) {
   );
 }
 
+Widget titulo(BuildContext context) {
+  return Column(
+    children: <Widget>[
+      Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Container(
+            child: Text('EDU',
+                style: GoogleFonts.bangers(
+                    fontSize: 40, color: Color(0XFFFF6B3D))),
+          ),
+          Container(
+            child: Text(
+              ' PAUEE',
+              style: GoogleFonts.bangers(
+                fontSize: 40,
+                color: Color(0xFFFFFFFF),
+              ),
+            ),
+          ),
+        ],
+      ),
+    ],
+  );
+}
+
 class ImagenCafe2 extends StatelessWidget {
+  final urlImage;
+
+  const ImagenCafe2({Key key, this.urlImage}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    AssetImage assetImage = AssetImage('assets/images/ex1.png');
-    Image image = Image(
-      image: assetImage,
-      width: 340,
-      height: 197,
-    );
     return Container(
-      child: image,
+      child: Image.network(
+        urlImage,
+        width: 345,
+        height: 157,
+      ),
     );
   }
 }
