@@ -1,6 +1,7 @@
 import 'package:chewie/chewie.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:video_player/video_player.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
@@ -28,6 +29,10 @@ class _ChewieDemoState extends State<Video> {
   ChewieController _chewieController;
   YoutubePlayerController _controller;
 
+  bool isYoutubeVideo(url) {
+    return url.contains("youtube");
+  }
+
   @override
   void initState() {
     super.initState();
@@ -49,7 +54,13 @@ class _ChewieDemoState extends State<Video> {
 
   @override
   void deactivate() {
-    _controller.pause();
+    if (isYoutubeVideo(widget.url)) {
+      _controller.pause();
+    } else {
+      _videoPlayerController1.pause();
+      _chewieController.pause();
+    }
+
     super.deactivate();
   }
 
@@ -59,7 +70,15 @@ class _ChewieDemoState extends State<Video> {
     _chewieController = ChewieController(
       videoPlayerController: _videoPlayerController1,
       autoPlay: true,
-      looping: true,
+      allowFullScreen: true,
+      allowedScreenSleep: false,
+      autoInitialize: true,
+      deviceOrientationsAfterFullScreen: [
+        DeviceOrientation.landscapeRight,
+        DeviceOrientation.landscapeLeft,
+        DeviceOrientation.portraitUp,
+        DeviceOrientation.portraitDown,
+      ],
     );
     setState(() {});
   }
@@ -69,62 +88,72 @@ class _ChewieDemoState extends State<Video> {
       initialVideoId: YoutubePlayer.convertUrlToId(widget.url),
       flags: YoutubePlayerFlags(
         enableCaption: false,
+        disableDragSeek: true,
         isLive: false,
         autoPlay: true,
         mute: false,
+        controlsVisibleAtStart: false,
       ),
     );
-  }
-
-  bool isYoutubeVideo(url) {
-    return url.contains("youtube");
   }
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: widget.title,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        primaryColor: Color(0xFF1F2430),
-        backgroundColor: Color(0xFF1F2430),
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: Scaffold(
-        backgroundColor: Color(0xFF1F2430),
-        appBar: AppBar(
-          title: titulo(context),
-        ),
-        body: Column(
-          children: <Widget>[
-            Expanded(
-              child: Center(
-                child: isYoutubeVideo(widget.url) == false
-                    ? _chewieController != null &&
-                            _chewieController
-                                .videoPlayerController.value.initialized
-                        ? Chewie(
-                            controller: _chewieController,
-                          )
-                        : Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              CircularProgressIndicator(),
-                              SizedBox(height: 20),
-                              Text('Cargando'),
-                            ],
-                          )
-                    : YoutubePlayer(
-                        controller: _controller,
-                        liveUIColor: Colors.amber,
-                      ),
+    return Container(
+      child: OrientationBuilder(
+        builder: (BuildContext context, Orientation orientation) {
+          if (orientation == Orientation.landscape) {
+            return Scaffold(
+              body: youtubeHierarchy(),
+              backgroundColor: Color(0xFF1F2430),
+            );
+          } else {
+            return Scaffold(
+              appBar: AppBar(
+                backgroundColor: Color(0xFF1F2430),
+                title: titulo(context),
+                elevation: 0,
               ),
-            ),
-          ],
-        ),
+              body: youtubeHierarchy(),
+              backgroundColor: Color(0xFF1F2430),
+            );
+          }
+        },
       ),
     );
+  }
+
+  youtubeHierarchy() {
+    return isYoutubeVideo(widget.url) == false
+        ? _chewieController != null &&
+                _chewieController.videoPlayerController.value.initialized
+            ? Chewie(
+                controller: _chewieController,
+              )
+            : Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  SizedBox(height: 50),
+                  CircularProgressIndicator(),
+                  SizedBox(height: 100),
+                  Text(
+                    'Cargando',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ],
+              )
+        : Container(
+            child: Align(
+              alignment: Alignment.topCenter,
+              child: FittedBox(
+                fit: BoxFit.fill,
+                child: YoutubePlayer(
+                  controller: _controller,
+                ),
+              ),
+            ),
+          );
   }
 }
 

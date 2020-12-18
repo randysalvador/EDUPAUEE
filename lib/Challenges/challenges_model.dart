@@ -15,7 +15,7 @@ class Challenge {
         id: parsedJson["id"],
         title: parsedJson["title"],
         cover: parsedJson["cover"],
-        markdownContent: parsedJson["markdown"]);
+        markdownContent: parsedJson["description"]);
   }
 }
 

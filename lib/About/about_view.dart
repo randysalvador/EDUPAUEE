@@ -13,15 +13,20 @@ class _AboutState extends State<About> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: titulo(context),
         backgroundColor: Color(0xFF1F2430),
         elevation: 0,
       ),
-      body: Column(
-        children: <Widget>[
-          miCard(),
-          miCardDesign(),
-          miCardDesign2(),
+      body: ListView(
+        children: [
+          Column(
+            children: <Widget>[
+              miCard(),
+              miCardDesign(),
+              miCardDesign2(),
+            ],
+          ),
         ],
       ),
       backgroundColor: Color(0xFF1F2430),

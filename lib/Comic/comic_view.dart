@@ -22,6 +22,7 @@ class Comics extends StatelessWidget {
       builder: (_) => Scaffold(
         backgroundColor: Color(0xFF1F2430),
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           title: titulo(context),
           backgroundColor: Color(0xFF1F2430),
           elevation: 0,

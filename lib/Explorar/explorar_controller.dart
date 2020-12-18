@@ -1,12 +1,14 @@
 import 'dart:convert';
+import 'package:edupauee/Explorar/explorar_view.dart';
 import 'package:http/http.dart' as http;
 import 'package:get/get.dart';
 import 'dart:async';
 import 'package:flutter/services.dart' show rootBundle;
-import 'package:edupauee/Challenges/challenges_model.dart';
+import 'package:edupauee/Explorar/explorar_model.dart';
+import 'package:edupauee/Explorar/explorar_controller.dart';
 
-class ChallengeController extends GetxController {
-  Future<List<Challenge>> getChallengeById(int idStore) async {
+class ExplorarController extends GetxController {
+  Future<List<Explore>> getExplorargeById(int idStore) async {
     //String baseUrl ="https://www.puntoshot.com.mx/api/offers/store/${idStore.toString()}.json";
     // final response = await http.get(baseUrl);
     final response = await rootBundle.loadString('assets/images/videos.json');
@@ -15,7 +17,7 @@ class ChallengeController extends GetxController {
       print("<<<< FATAL ERROR  API>>>>");
       return null;
     } else {
-      return allChallengeFromJson(response);
+      return allExplorarFromJson(response);
     }
   }
 }

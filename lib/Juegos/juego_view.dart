@@ -1,5 +1,8 @@
+import 'package:edupauee/Juegos/QuizStar/home.dart';
+import 'package:edupauee/Juegos/QuizStar/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 //import 'package:get/get.dart';
@@ -9,93 +12,99 @@ class Juegos extends StatefulWidget {
 }
 
 class _JuegosState extends State<Juegos> {
+  List<String> images = [
+    "assets/images/juego1.png",
+    "assets/images/juego2.png",
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: titulo(context),
         backgroundColor: Color(0xFF1F2430),
         elevation: 0,
       ),
-      body: SingleChildScrollView(
-        child: catalogo(context),
+      body: ListView(
+        children: [
+          customcard(images[0]),
+          customcard(images[0]),
+          customcard(images[0]),
+        ],
       ),
       backgroundColor: Color(0xFF1F2430),
     );
   }
-}
 
-Widget titulo(BuildContext context) {
-  return Column(
-    children: <Widget>[
-      Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Container(
-            child: Text('EDU',
+  Widget titulo(BuildContext context) {
+    return Column(
+      children: <Widget>[
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Container(
+              child: Text('EDU',
+                  style: GoogleFonts.bangers(
+                      fontSize: 40, color: Color(0XFFFF6B3D))),
+            ),
+            Container(
+              child: Text(
+                ' PAUEE',
                 style: GoogleFonts.bangers(
-                    fontSize: 40, color: Color(0XFFFF6B3D))),
-          ),
-          Container(
-            child: Text(
-              ' PAUEE',
-              style: GoogleFonts.bangers(
-                fontSize: 40,
-                color: Color(0xFFFFFFFF),
+                  fontSize: 40,
+                  color: Color(0xFFFFFFFF),
+                ),
               ),
             ),
-          ),
-        ],
-      ),
-    ],
-  );
-}
-
-Widget catalogo(BuildContext context) {
-  return Container(
-    width: 3008,
-    height: 500,
-    child: Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Card(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(15.0),
-          ),
-          child: ImagenJuego1(),
-          color: Color(0xFF1F2430),
+          ],
         ),
       ],
-    ),
-  );
-}
-
-class ImagenJuego1 extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    AssetImage assetImage = AssetImage('assets/images/juego1.png');
-    Image image = Image(
-      image: assetImage,
-      width: 298,
-      height: 490,
-    );
-    return Container(
-      child: image,
     );
   }
-}
 
-class ImagenJuego2 extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    AssetImage assetImage = AssetImage('assets/images/juego2.png');
-    Image image = Image(
-      image: assetImage,
-      width: 298,
-      height: 470,
-    );
-    return Container(
-      child: image,
+  Widget customcard(String image) {
+    return Padding(
+      padding: EdgeInsets.symmetric(
+        vertical: 20.0,
+        horizontal: 20.0,
+      ),
+      child: InkWell(
+        onTap: () {
+          Navigator.of(context).pushReplacement(MaterialPageRoute(
+            // in changelog 1 we will pass the langname name to ther other widget class
+            // this name will be used to open a particular JSON file
+            // for a particular language
+            builder: (context) => homepage(),
+          ));
+        },
+        child: Material(
+          color: Colors.transparent,
+          elevation: 0.0,
+          borderRadius: BorderRadius.circular(20.0),
+          child: Container(
+            child: Column(
+              children: <Widget>[
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                    vertical: 0.0,
+                  ),
+                  child: Container(
+                    // changing from 200 to 150 as to look better
+                    width: 298,
+                    height: 470,
+                    child: Image(
+                      image: AssetImage(
+                        image,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
     );
   }
 }

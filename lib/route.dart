@@ -15,7 +15,7 @@ class Router {
       case '/':
         return MaterialPageRoute(builder: (_) => IntroPage());
       case 'explorar':
-        return MaterialPageRoute(builder: (_) => Explorar());
+        return MaterialPageRoute(builder: (_) => Explores());
       case 'juegos':
         return MaterialPageRoute(builder: (_) => Juegos());
       case 'comic':

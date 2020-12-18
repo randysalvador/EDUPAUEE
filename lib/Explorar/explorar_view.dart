@@ -1,88 +1,86 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-//import 'package:get/get.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/widgets.dart';
 import 'package:edupauee/Explorar/explorarVideo_view.dart';
+import 'explorar_controller.dart';
+import 'explorar_model.dart';
 
 //import 'package:get/get.dart';
-class Explorar extends StatelessWidget {
+class Explores extends StatelessWidget {
+  final ExplorarController explorarController =
+      Get.put<ExplorarController>(ExplorarController());
+  final int id_explore;
+
+  Explores({Key key, this.id_explore});
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: titulo(context),
-        backgroundColor: Color(0xFF1F2430),
-        elevation: 0,
-      ),
-      body: cardWidget(context),
-      backgroundColor: Color(0xFF1F2430),
-    );
-  }
-}
-
-Widget cardWidget(BuildContext context) {
-  return Column(
-    children: <Widget>[
-      Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          GestureDetector(
-              child: ClipPath(
-                clipper: ShapeBorderClipper(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15))),
-                child: Container(
-                  height: 317,
-                  width: 360,
-                  padding: EdgeInsets.all(10.0),
-                  alignment: Alignment.centerLeft,
-                  child: Container(
-                    alignment: Alignment.center,
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                ImagenCafe2(),
-                                Container(
-                                  child: Text(
-                                    'Eficiencia Energética, Reducir el Consumo',
-                                    style: GoogleFonts.poppins(
-                                        fontSize: 12,
-                                        color: Color(0XFFFFFFFF),
-                                        fontWeight: FontWeight.bold),
+    return GetBuilder<ExplorarController>(
+      init: explorarController,
+      builder: (_) => Scaffold(
+        appBar: AppBar(
+          automaticallyImplyLeading: false,
+          title: titulo(context),
+          backgroundColor: Color(0xFF1F2430),
+          elevation: 0,
+        ),
+        body: FutureBuilder(
+          future: _.getExplorargeById(id_explore),
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              List<Explore> explores = snapshot.data ?? [];
+              return ListView.builder(
+                itemCount: explores.length,
+                itemBuilder: (context, index) => Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Stack(
+                    children: [
+                      Container(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Container(
+                              height: 200,
+                              decoration: BoxDecoration(
+                                image: DecorationImage(
+                                    image: NetworkImage(
+                                        snapshot.data[index].cover),
+                                    fit: BoxFit.cover),
+                              ),
+                              child: Align(
+                                alignment: Alignment.bottomCenter,
+                                child: Container(
+                                  color: Colors.grey.withOpacity(0.3),
+                                  height: 50,
+                                  width: MediaQuery.of(context).size.width,
+                                  child: Align(
+                                    alignment: Alignment.centerLeft,
+                                    child: Text(
+                                      snapshot.data[index].title,
+                                      style: TextStyle(color: Colors.white),
+                                    ),
                                   ),
                                 ),
-                              ],
+                              ),
                             ),
                           ],
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ),
-              ),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => Video(
-                            url: 'https://www.youtube.com/watch?v=fWDsSUzfy8o',
-                            //url: 'https://flutter.github.io/assets-for-api-docs/assets/videos/butterfly.mp4',
-                          )),
-                );
-              }),
-        ],
+              );
+            } else {
+              return Center(child: CircularProgressIndicator());
+            }
+          },
+        ),
+        backgroundColor: Color(0xFF1F2430),
       ),
-    ],
-  );
+    );
+  }
 }
 
 Widget titulo(BuildContext context) {

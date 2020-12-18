@@ -7,6 +7,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'challenges_controller.dart';
 import 'challenges_model.dart';
 
+import 'markDown.dart';
+
 class Challenges extends StatelessWidget {
   final ChallengeController challengeController =
       Get.put<ChallengeController>(ChallengeController());
@@ -21,13 +23,17 @@ class Challenges extends StatelessWidget {
       builder: (_) => Scaffold(
         backgroundColor: Color(0xFF1F2430),
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           title: title(context),
           backgroundColor: Color(0xFF1F2430),
           elevation: 0,
         ),
         body: GestureDetector(
           onTap: () {
-            print("Press");
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => DetailsMarkDown()),
+            );
           },
           child: FutureBuilder(
             future: _.getChallengeById(id_challenge),
@@ -41,18 +47,39 @@ class Challenges extends StatelessWidget {
                     child: Stack(
                       children: [
                         Container(
-                          padding: EdgeInsets.all(10.0),
-                          color: Color(0xFF1F2430),
-                          width: 360,
-                          height: 210,
-                          child: Stack(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
-                              Positioned(
-                                top: 25.5,
-                                child: ImagenChallege(
-                                  urlImage: snapshot.data[index].cover,
+                              Container(
+                                height: 200,
+                                decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                      image: NetworkImage(
+                                          snapshot.data[index].cover),
+                                      fit: BoxFit.cover),
+                                ),
+                                child: Align(
+                                  alignment: Alignment.bottomCenter,
+                                  child: Container(
+                                    color: Colors.grey.withOpacity(0.3),
+                                    height: 50,
+                                    width: MediaQuery.of(context).size.width,
+                                    child: Align(
+                                      alignment: Alignment.centerLeft,
+                                      child: Text(
+                                        snapshot.data[index].title,
+                                      ),
+                                    ),
+                                  ),
                                 ),
                               ),
+                              Container(
+                                padding: EdgeInsets.all(10),
+                                child: Text(
+                                  "Your Big Text ",
+                                  textAlign: TextAlign.left,
+                                ),
+                              )
                             ],
                           ),
                         ),

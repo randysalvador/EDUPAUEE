@@ -14,7 +14,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   int _selectedIndex = 0;
   List<Widget> routesDataNavigationBar = [
-    Explorar(),
+    Explores(),
     Juegos(),
     Comics(),
     Challenges(),
