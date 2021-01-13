@@ -69,6 +69,9 @@ flutter:
     - assets/images/challegeConductividad.png
     - assets/stores.json
     - assets/images/videos.json
+    - assets/images/quizt.png
+    - images/energiaR.png
+    - images/reciclaje.jpg
     - assets/
     - images/
     

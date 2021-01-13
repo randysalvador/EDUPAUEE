@@ -15,6 +15,7 @@ class _JuegosState extends State<Juegos> {
   List<String> images = [
     "assets/images/juego1.png",
     "assets/images/juego2.png",
+    "assets/images/quizt.png",
   ];
 
   @override
@@ -28,9 +29,9 @@ class _JuegosState extends State<Juegos> {
       ),
       body: ListView(
         children: [
-          customcard(images[0]),
-          customcard(images[0]),
-          customcard(images[0]),
+          customcard(images[2]),
+          customcard(images[2]),
+          customcard(images[2]),
         ],
       ),
       backgroundColor: Color(0xFF1F2430),
@@ -92,11 +93,12 @@ class _JuegosState extends State<Juegos> {
                   child: Container(
                     // changing from 200 to 150 as to look better
                     width: 298,
-                    height: 470,
+                    height: 300,
                     child: Image(
                       image: AssetImage(
                         image,
                       ),
+                      fit: BoxFit.cover,
                     ),
                   ),
                 ),

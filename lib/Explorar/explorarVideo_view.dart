@@ -1,4 +1,5 @@
 import 'package:chewie/chewie.dart';
+import 'package:edupauee/Explorar/explorar_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -13,7 +14,10 @@ void main() {
 }
 
 class Video extends StatefulWidget {
-  Video({this.title = 'Chewie Demo', this.url});
+  Video(
+      {this.title = 'Chewie Demo',
+      this.url,
+      FutureBuilder<List<Explore>> children});
 
   final String title;
   final String url;

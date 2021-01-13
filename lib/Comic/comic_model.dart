@@ -4,10 +4,15 @@ import 'package:edupauee/Comic/comic_model.dart';
 
 class Comic {
   final int id;
-  final String cover;
-  Comic({this.id, this.cover});
+  final String title;
+  final String images;
+
+  Comic({this.id, this.title, this.images});
   factory Comic.fromJson(Map<String, dynamic> parsedJson) {
-    return Comic(id: parsedJson["id"], cover: parsedJson["cover"]);
+    return Comic(
+        id: parsedJson["id"],
+        title: parsedJson["title"],
+        images: parsedJson["images"]);
   }
 }
 

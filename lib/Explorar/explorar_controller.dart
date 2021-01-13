@@ -11,7 +11,7 @@ class ExplorarController extends GetxController {
   Future<List<Explore>> getExplorargeById(int idStore) async {
     //String baseUrl ="https://www.puntoshot.com.mx/api/offers/store/${idStore.toString()}.json";
     // final response = await http.get(baseUrl);
-    final response = await rootBundle.loadString('assets/images/videos.json');
+    final response = await rootBundle.loadString('assets/exploreStores.json');
     if (response == '') {
       //print(baseUrl);
       print("<<<< FATAL ERROR  API>>>>");

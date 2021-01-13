@@ -11,8 +11,18 @@ class DetailsMarkDown extends StatelessWidget {
   final ChallengeController detailsController =
       Get.put<ChallengeController>(ChallengeController());
   final int id_details;
+  final String cover;
+  final String title;
+  final String description;
+  final String materiales;
 
-  DetailsMarkDown({Key key, this.id_details});
+  DetailsMarkDown(
+      {Key key,
+      this.id_details,
+      this.cover,
+      this.title,
+      this.description,
+      this.materiales});
 
   String text = "";
 
@@ -24,40 +34,84 @@ class DetailsMarkDown extends StatelessWidget {
         appBar: AppBar(
           backgroundColor: Color(0xFF1F2430),
           title: const Text(
-            "MarkDown Editor",
+            "Challenge",
             style: TextStyle(color: Colors.white),
           ),
         ),
-        body: FutureBuilder(
-          future: _.getChallengeById(id_details),
-          builder: (context, snapshot) {
-            if (snapshot.hasData) {
-              List<Challenge> challenges = snapshot.data ?? [];
-              return ListView.builder(
-                itemCount: challenges.length,
-                itemBuilder: (context, index) => Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Container(
-                      margin: EdgeInsets.all(20),
-                      child: MarkdownBody(
-                        data: snapshot.data[index].markdownContent,
-                        styleSheet: MarkdownStyleSheet(
-                          h2: TextStyle(color: Colors.blue, fontSize: 40),
-                        ),
-                      )),
+        body: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            children: [
+              Container(
+                padding: EdgeInsets.fromLTRB(10, 0, 10, 10),
+                height: 100,
+                width: double.infinity,
+                child: Text(
+                  title,
+                  style: GoogleFonts.poppins(
+                      fontSize: 25,
+                      color: Color(0xFFFFFFFF),
+                      fontWeight: FontWeight.bold),
                 ),
-              );
-            } else {
-              return Center(child: CircularProgressIndicator());
-            }
-          },
+              ),
+              Container(
+                padding: EdgeInsets.all(10),
+                width: 343,
+                height: 157,
+                child: ImagenChallenge(
+                  urlImage: cover,
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.all(10),
+                alignment: AlignmentDirectional.centerStart,
+                child: Text(
+                  "Materiales",
+                  style: GoogleFonts.poppins(
+                      fontSize: 14,
+                      color: Color(0xFFFFFFFF),
+                      fontWeight: FontWeight.bold),
+                ),
+              ),
+              Container(
+                alignment: Alignment.topLeft,
+                margin: EdgeInsets.all(20),
+                child: MarkdownBody(
+                  data: materiales,
+                  styleSheet: MarkdownStyleSheet(
+                    h2: TextStyle(color: Colors.blue, fontSize: 40),
+                  ),
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.all(10),
+                alignment: AlignmentDirectional.centerStart,
+                child: Text(
+                  "Instrucciones",
+                  style: GoogleFonts.poppins(
+                      fontSize: 14,
+                      color: Color(0xFFFFFFFF),
+                      fontWeight: FontWeight.bold),
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.all(20),
+                child: MarkdownBody(
+                  data: description,
+                  styleSheet: MarkdownStyleSheet(
+                    h2: TextStyle(color: Colors.blue, fontSize: 40),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
         backgroundColor: Color(0xFF1F2430),
       ),
     );
   }
 
-  Widget title(BuildContext context) {
+  Widget title2(BuildContext context) {
     return GetBuilder<ChallengeController>(
       init: detailsController,
       builder: (_) => Column(
@@ -89,6 +143,23 @@ class DetailsMarkDown extends StatelessWidget {
             },
           ),
         ],
+      ),
+    );
+  }
+}
+
+class ImagenChallenge extends StatelessWidget {
+  final urlImage;
+
+  const ImagenChallenge({Key key, this.urlImage}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Image.network(
+        urlImage,
+        width: 345,
+        height: 157,
+        fit: BoxFit.cover,
       ),
     );
   }

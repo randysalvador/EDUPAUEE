@@ -246,7 +246,7 @@ class _quizpageState extends State<quizpage> {
                   title: Text(
                     "Quizstar",
                   ),
-                  content: Text("You Can't Go Back At This Stage."),
+                  content: Text("No puede volver en esta etapa."),
                   actions: <Widget>[
                     FlatButton(
                       onPressed: () {

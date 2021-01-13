@@ -5,18 +5,17 @@ import 'package:edupauee/Explorar/explorar_view.dart';
 class Explore {
   final int id;
   final String title;
-  final String markdownContent;
-
+  final String url;
   final String cover;
 
-  Explore({this.id, this.title, this.cover, this.markdownContent});
+  Explore({this.id, this.title, this.url, this.cover});
 
   factory Explore.fromJson(Map<String, dynamic> parsedJson) {
     return Explore(
         id: parsedJson["id"],
         title: parsedJson["title"],
         cover: parsedJson["cover"],
-        markdownContent: parsedJson["markdown"]);
+        url: parsedJson["url"]);
   }
 }
 

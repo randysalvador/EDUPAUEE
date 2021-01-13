@@ -9,19 +9,14 @@ class homepage extends StatefulWidget {
 
 class _homepageState extends State<homepage> {
   List<String> images = [
-    "images/py.png",
-    "images/java.png",
-    "images/js.png",
-    "images/cpp.png",
-    "images/linux.png",
+    "images/energiaR.png",
+    "images/reciclaje.jpg",
   ];
 
   List<String> des = [
-    "Python is one of the most popular and fastest programming language since half a decade.\nIf You think you have learnt it.. \nJust test yourself !!",
-    "Java has always been one of the best choices for Enterprise World. If you think you have learn the Language...\nJust Test Yourself !!",
-    "Javascript is one of the most Popular programming language supporting the Web.\nIt has a wide range of Libraries making it Very Powerful !",
-    "C++, being a statically typed programming language is very powerful and Fast.\nit's DMA feature makes it more useful. !",
-    "Linux is a OPEN SOURCE Operating System which powers many Servers and Workstation.\nIt is also a top Priority in Developement Work !",
+    "Energía que utiliza los recursos inagotables de la naturaleza, como la biomasa, las radiaciones solares o el viento.\n ",
+    "El reciclaje es un proceso cuyo objetivo es convertir residuos en nuevos productos o en materia prima para su posterior utilización.\n",
+    "El uso eficiente de la energía, a veces simplemente llamado, eficiencia energética o ahorro energético, es el\n objetivo de reducir la cantidad de energía requerida para proporcionar productos y servicios.\n",
   ];
 
   Widget customcard(String langname, String image, String des) {
@@ -117,9 +112,6 @@ class _homepageState extends State<homepage> {
         children: <Widget>[
           customcard("Energía renovable", images[0], des[0]),
           customcard("Reciclaje", images[1], des[1]),
-          customcard("Ahorro energetíco", images[2], des[2]),
-          customcard("Impacto ambiental", images[3], des[3]),
-          customcard("XD", images[4], des[4]),
         ],
       ),
       backgroundColor: Color(0xFF1F2430),

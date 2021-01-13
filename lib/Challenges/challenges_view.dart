@@ -28,80 +28,67 @@ class Challenges extends StatelessWidget {
           backgroundColor: Color(0xFF1F2430),
           elevation: 0,
         ),
-        body: GestureDetector(
-          onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => DetailsMarkDown()),
-            );
-          },
-          child: FutureBuilder(
-            future: _.getChallengeById(id_challenge),
-            builder: (context, snapshot) {
-              if (snapshot.hasData) {
-                List<Challenge> challenges = snapshot.data ?? [];
-                return ListView.builder(
-                  itemCount: challenges.length,
-                  itemBuilder: (context, index) => Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Stack(
-                      children: [
-                        Container(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              Container(
-                                height: 200,
-                                decoration: BoxDecoration(
-                                  image: DecorationImage(
-                                      image: NetworkImage(
-                                          snapshot.data[index].cover),
-                                      fit: BoxFit.cover),
-                                ),
-                                child: Align(
-                                  alignment: Alignment.bottomCenter,
-                                  child: Container(
-                                    color: Colors.grey.withOpacity(0.3),
-                                    height: 50,
-                                    width: MediaQuery.of(context).size.width,
-                                    child: Align(
-                                      alignment: Alignment.centerLeft,
-                                      child: Text(
-                                        snapshot.data[index].title,
-                                      ),
-                                    ),
-                                  ),
-                                ),
+        body: FutureBuilder(
+          future: _.getChallengeById(id_challenge),
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              List<Challenge> challenges = snapshot.data ?? [];
+              return ListView.builder(
+                itemCount: challenges.length,
+                itemBuilder: (context, index) => GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => DetailsMarkDown(
+                          cover: snapshot.data[index].cover,
+                          title: snapshot.data[index].title,
+                          description: snapshot.data[index].description,
+                          materiales: snapshot.data[index].materiales,
+                        ),
+                      ),
+                    );
+                  },
+                  child: Stack(
+                    children: [
+                      Container(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Container(
+                              height: 157,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(15),
+                                image: DecorationImage(
+                                    image: NetworkImage(
+                                        snapshot.data[index].cover),
+                                    fit: BoxFit.cover),
                               ),
-                              Container(
-                                padding: EdgeInsets.all(10),
-                                child: Text(
-                                  "Your Big Text ",
-                                  textAlign: TextAlign.left,
-                                ),
-                              )
-                            ],
-                          ),
+                            ),
+                            SizedBox(
+                              height: 13,
+                            ),
+                          ],
                         ),
-                        Container(
-                          padding: EdgeInsets.fromLTRB(22, 65, 10, 10),
-                          child: Text(
-                            snapshot.data[index].title,
-                            style: GoogleFonts.poppins(
-                                fontSize: 25,
-                                color: Color(0xFFFFFFFF),
-                                fontWeight: FontWeight.bold),
-                          ),
+                      ),
+                      Container(
+                        padding: EdgeInsets.fromLTRB(22, 65, 10, 10),
+                        child: Text(
+                          snapshot.data[index].title,
+                          style: GoogleFonts.poppins(
+                              fontSize: 25,
+                              color: Color(0xFFFFFFFF),
+                              fontWeight: FontWeight.bold),
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
-                );
-              } else {
-                return Center(child: CircularProgressIndicator());
-              }
-            },
-          ),
+                ),
+              );
+            } else {
+              return Center(child: CircularProgressIndicator());
+            }
+          },
         ),
       ),
     );

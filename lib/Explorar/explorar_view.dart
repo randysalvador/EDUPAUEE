@@ -33,8 +33,18 @@ class Explores extends StatelessWidget {
               List<Explore> explores = snapshot.data ?? [];
               return ListView.builder(
                 itemCount: explores.length,
-                itemBuilder: (context, index) => Padding(
-                  padding: const EdgeInsets.all(8.0),
+                itemBuilder: (context, index) => GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Video(
+                          url: snapshot.data[index].url,
+                          //url: 'https://flutter.github.io/assets-for-api-docs/assets/videos/butterfly.mp4',
+                        ),
+                      ),
+                    );
+                  },
                   child: Stack(
                     children: [
                       Container(
@@ -44,6 +54,7 @@ class Explores extends StatelessWidget {
                             Container(
                               height: 200,
                               decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
                                 image: DecorationImage(
                                     image: NetworkImage(
                                         snapshot.data[index].cover),
@@ -52,19 +63,32 @@ class Explores extends StatelessWidget {
                               child: Align(
                                 alignment: Alignment.bottomCenter,
                                 child: Container(
-                                  color: Colors.grey.withOpacity(0.3),
                                   height: 50,
                                   width: MediaQuery.of(context).size.width,
-                                  child: Align(
-                                    alignment: Alignment.centerLeft,
-                                    child: Text(
-                                      snapshot.data[index].title,
-                                      style: TextStyle(color: Colors.white),
+                                  child: Material(
+                                    borderRadius: BorderRadius.only(
+                                      bottomLeft: Radius.circular(10),
+                                      bottomRight: Radius.circular(10),
+                                    ),
+                                    color: Color(0xFF1F2430).withOpacity(0.8),
+                                    child: Align(
+                                      //alignment: Alignment.centerLeft,
+                                      alignment: Alignment.centerLeft,
+                                      child: Text(
+                                        snapshot.data[index].title,
+                                        style: GoogleFonts.poppins(
+                                            fontSize: 12,
+                                            color: Color(0XFFFFFFFF),
+                                            fontWeight: FontWeight.bold),
+                                      ),
                                     ),
                                   ),
                                 ),
                               ),
                             ),
+                            SizedBox(
+                              height: 13.0,
+                            )
                           ],
                         ),
                       ),

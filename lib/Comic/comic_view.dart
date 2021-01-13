@@ -43,19 +43,19 @@ class Comics extends StatelessWidget {
                     child: Stack(
                       children: [
                         Container(
-                          width: 367,
-                          height: 684,
+                          width: 357,
+                          height: 594,
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Card(
                                 shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(15.0),
+                                  borderRadius: BorderRadius.circular(4.0),
                                 ),
                                 child: ImagenComic(
-                                  urlImage: snapshot.data[index].cover,
+                                  urlImage: snapshot.data[index].images,
                                 ),
-                                color: Color(0xFF000000),
+                                color: Color(0xFF1F2434),
                               ),
                             ],
                           ),
@@ -110,8 +110,8 @@ class ImagenComic extends StatelessWidget {
     return Container(
       child: Image.network(
         urlImage,
-        width: 345,
-        height: 157,
+        width: 357,
+        height: 560,
       ),
     );
   }

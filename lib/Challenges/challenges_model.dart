@@ -3,19 +3,22 @@ import 'package:edupauee/Challenges/challenges_controller.dart';
 
 class Challenge {
   final int id;
-  final String title;
-  final String markdownContent;
-
   final String cover;
+  final String title;
+  final String materiales;
 
-  Challenge({this.id, this.title, this.cover, this.markdownContent});
+  final String description;
+
+  Challenge(
+      {this.id, this.cover, this.title, this.description, this.materiales});
 
   factory Challenge.fromJson(Map<String, dynamic> parsedJson) {
     return Challenge(
         id: parsedJson["id"],
-        title: parsedJson["title"],
         cover: parsedJson["cover"],
-        markdownContent: parsedJson["description"]);
+        title: parsedJson["title"],
+        description: parsedJson["description"],
+        materiales: parsedJson["materiales"]);
   }
 }
 
