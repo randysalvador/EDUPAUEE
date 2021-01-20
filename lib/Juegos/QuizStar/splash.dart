@@ -1,7 +1,6 @@
 import 'dart:async';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:edupauee/juegos/QuizStar/home.dart';
+import 'package:edupauee/Juegos/QuizStar/home.dart';
 
 class splashscreen extends StatefulWidget {
   @override
@@ -12,7 +11,7 @@ class _splashscreenState extends State<splashscreen> {
   @override
   void initState() {
     super.initState();
-    Timer(Duration(seconds: 2), () {
+    Timer(Duration(seconds: 3), () {
       Navigator.of(context).pushReplacement(MaterialPageRoute(
         builder: (context) => homepage(),
       ));
@@ -24,7 +23,7 @@ class _splashscreenState extends State<splashscreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF1F2430),
+      backgroundColor: Colors.indigo,
       body: Center(
         child: Text(
           "Quizstar\nTest Yourself !!",

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:edupauee/juegos/QuizStar/home.dart';
+import 'package:edupauee/Juegos/QuizStar/home.dart';
 
 class resultpage extends StatefulWidget {
   int marks;
@@ -40,7 +40,7 @@ class _resultpageState extends State<resultpage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Resultado",
+          "Result",
         ),
       ),
       body: Column(

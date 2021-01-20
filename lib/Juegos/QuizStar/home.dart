@@ -102,7 +102,7 @@ class _homepageState extends State<homepage> {
       appBar: AppBar(
         backgroundColor: Color(0xFF1F2430),
         title: Text(
-          "Quizstar",
+          "QuizSedener",
           style: TextStyle(
             fontFamily: "Quando",
           ),

@@ -30,8 +30,6 @@ class _JuegosState extends State<Juegos> {
       body: ListView(
         children: [
           customcard(images[2]),
-          customcard(images[2]),
-          customcard(images[2]),
         ],
       ),
       backgroundColor: Color(0xFF1F2430),

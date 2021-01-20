@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:edupauee/juegos/QuizStar/resultpage.dart';
+import 'package:edupauee/Juegos/QuizStar/resultpage.dart';
 
 class getjson extends StatelessWidget {
   // accept the langname as a parameter
@@ -44,7 +44,7 @@ class getjson extends StatelessWidget {
           return Scaffold(
             body: Center(
               child: Text(
-                "Cargando",
+                "Cargando...",
               ),
             ),
           );
@@ -76,7 +76,7 @@ class _quizpageState extends State<quizpage> {
   bool disableAnswer = false;
   // extra varibale to iterate
   int j = 1;
-  int timer = 15;
+  int timer = 30;
   String showtimer = "30";
   var random_array;
 
@@ -97,7 +97,7 @@ class _quizpageState extends State<quizpage> {
     var distinctIds = [];
     var rand = new Random();
     for (int i = 0;;) {
-      distinctIds.add(rand.nextInt(10));
+      distinctIds.add(rand.nextInt(10) + 1);
       random_array = distinctIds.toSet().toList();
       if (random_array.length < 10) {
         continue;
@@ -203,7 +203,7 @@ class _quizpageState extends State<quizpage> {
     });
     // nextquestion();
     // changed timer duration to 1 second
-    Timer(Duration(seconds: 1), nextquestion);
+    Timer(Duration(seconds: 2), nextquestion);
   }
 
   Widget choicebutton(String k) {
@@ -238,79 +238,65 @@ class _quizpageState extends State<quizpage> {
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations(
         [DeviceOrientation.portraitDown, DeviceOrientation.portraitUp]);
-    return WillPopScope(
-      onWillPop: () {
-        return showDialog(
-            context: context,
-            builder: (context) => AlertDialog(
-                  title: Text(
-                    "Quizstar",
-                  ),
-                  content: Text("No puede volver en esta etapa."),
-                  actions: <Widget>[
-                    FlatButton(
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                      },
-                      child: Text(
-                        'Ok',
-                      ),
-                    )
+    return Scaffold(
+      backgroundColor: Color(0xFF1F2430),
+      appBar: AppBar(
+        title: Text("Quiz"),
+        backgroundColor: Color(0xFF1F2430),
+        elevation: 0,
+      ),
+      body: Column(
+        children: <Widget>[
+          Expanded(
+            flex: 3,
+            child: Container(
+              padding: EdgeInsets.all(15.0),
+              alignment: Alignment.bottomLeft,
+              child: Text(
+                mydata[0][i.toString()],
+                style: TextStyle(
+                  fontSize: 16.0,
+                  fontFamily: "Quando",
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          ),
+          Expanded(
+            flex: 6,
+            child: AbsorbPointer(
+              absorbing: disableAnswer,
+              child: Container(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    choicebutton('a'),
+                    choicebutton('b'),
+                    choicebutton('c'),
+                    choicebutton('d'),
                   ],
-                ));
-      },
-      child: Scaffold(
-        body: Column(
-          children: <Widget>[
-            Expanded(
-              flex: 3,
-              child: Container(
-                padding: EdgeInsets.all(15.0),
-                alignment: Alignment.bottomLeft,
+                ),
+              ),
+            ),
+          ),
+          Expanded(
+            flex: 1,
+            child: Container(
+              alignment: Alignment.topCenter,
+              child: Center(
                 child: Text(
-                  mydata[0][i.toString()],
+                  showtimer,
                   style: TextStyle(
-                    fontSize: 16.0,
-                    fontFamily: "Quando",
+                    fontSize: 35.0,
+                    fontWeight: FontWeight.w700,
+                    fontFamily: 'Times New Roman',
+                    color: Color(0XFFFF6B3D),
                   ),
                 ),
               ),
             ),
-            Expanded(
-              flex: 6,
-              child: AbsorbPointer(
-                absorbing: disableAnswer,
-                child: Container(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      choicebutton('a'),
-                      choicebutton('b'),
-                      choicebutton('c'),
-                      choicebutton('d'),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-            Expanded(
-              flex: 1,
-              child: Container(
-                alignment: Alignment.topCenter,
-                child: Center(
-                  child: Text(
-                    showtimer,
-                    style: TextStyle(
-                      fontSize: 35.0,
-                      fontWeight: FontWeight.w700,
-                      fontFamily: 'Times New Roman',
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
