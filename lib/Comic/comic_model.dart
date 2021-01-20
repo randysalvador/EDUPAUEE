@@ -1,22 +1,52 @@
 import 'dart:convert';
-import 'package:edupauee/Comic/comic_controller.dart';
-import 'package:edupauee/Comic/comic_model.dart';
+
+List<Comic> allComicFromJson(String str) =>
+    List<Comic>.from(json.decode(str).map((x) => Comic.fromJson(x)));
+
+String comicToJson(List<Comic> data) =>
+    json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 class Comic {
-  final int id;
-  final String title;
-  final String images;
+  Comic({
+    this.comicId,
+    this.nombre,
+    this.cover,
+    this.contenido,
+  });
 
-  Comic({this.id, this.title, this.images});
-  factory Comic.fromJson(Map<String, dynamic> parsedJson) {
-    return Comic(
-        id: parsedJson["id"],
-        title: parsedJson["title"],
-        images: parsedJson["images"]);
-  }
+  final String comicId;
+  final String nombre;
+  final String cover;
+  final List<Contenido> contenido;
+
+  factory Comic.fromJson(Map<String, dynamic> json) => Comic(
+        comicId: json["comicId"],
+        nombre: json["nombre"],
+        cover: json["cover"],
+        contenido: List<Contenido>.from(
+            json["contenido"].map((x) => Contenido.fromJson(x))),
+      );
+
+  Map<String, dynamic> toJson() => {
+        "comicId": comicId,
+        "nombre": nombre,
+        "cover": cover,
+        "contenido": List<dynamic>.from(contenido.map((x) => x.toJson())),
+      };
 }
 
-List<Comic> allComicFromJson(String jsonData) {
-  final data = json.decode(jsonData);
-  return List<Comic>.from(data.map((item) => Comic.fromJson(item)));
+class Contenido {
+  Contenido({
+    this.url,
+  });
+
+  final String url;
+
+  factory Contenido.fromJson(Map<String, dynamic> json) => Contenido(
+        url: json["url"],
+      );
+
+  Map<String, dynamic> toJson() => {
+        "url": url,
+      };
 }

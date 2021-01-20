@@ -1,6 +1,152 @@
-[{
-    "type":"image_array",
-    "title": "Historieta X",
-    "images": "https://upload.wikimedia.org/wikipedia/commons/9/90/WhizComicsNo02.jpg"
-}
+[
+      {
+            "comicId":"01",
+            "nombre": "Capitan Energy",
+            "cover":"https://i.pinimg.com/originals/ba/b8/02/bab802936bd1b7253855af6d20dc6221.jpg",
+            "contenido":[
+                {
+                    
+                    "url":"https://upload.wikimedia.org/wikipedia/commons/9/90/WhizComicsNo02.jpg"
+                },
+                {
+                    
+                    "url":"https://upload.wikimedia.org/wikipedia/commons/9/90/WhizComicsNo02.jpg"
+                },
+                {
+                    
+                    "url":"https://upload.wikimedia.org/wikipedia/commons/9/90/WhizComicsNo02.jpg"
+                },
+                {
+                    
+                    "url":"https://upload.wikimedia.org/wikipedia/commons/9/90/WhizComicsNo02.jpg"
+                }
+            ]
+        },
+         {
+            "comicId":"02",
+            "nombre": "Capitan Energy 2",
+            "cover":"https://upload.wikimedia.org/wikipedia/commons/9/90/WhizComicsNo02.jpg",
+            "contenido":[
+                {
+                    
+                    "url":"https://upload.wikimedia.org/wikipedia/commons/9/90/WhizComicsNo02.jpg"
+                },
+                {
+                    
+                    "url":"https://upload.wikimedia.org/wikipedia/commons/9/90/WhizComicsNo02.jpg"
+                },
+                {
+                    
+                    "url":"https://upload.wikimedia.org/wikipedia/commons/9/90/WhizComicsNo02.jpg"
+                }
+            ]
+        },
+        {
+            "comicId":"03",
+            "nombre": "Flash Brightest Day",
+            "cover":"https://firebasestorage.googleapis.com/v0/b/qwerty-f63b1.appspot.com/o/flash_01_001.jpg?alt=media&token=cd43208e-1cc8-4c91-b852-8b77f1412dba",
+            "contenido":[
+                {
+                    
+                    "url":"https://firebasestorage.googleapis.com/v0/b/qwerty-f63b1.appspot.com/o/flash_01_002.jpg?alt=media&token=d8103ac4-1c87-4e72-99da-a9861f1e5c90"
+                },
+                {
+                    
+                    "url":"https://firebasestorage.googleapis.com/v0/b/qwerty-f63b1.appspot.com/o/flash_01_003.jpg?alt=media&token=748b1c70-ce18-47b2-a961-607a48f06f02"
+                },
+                {
+                    
+                    "url":"https://firebasestorage.googleapis.com/v0/b/qwerty-f63b1.appspot.com/o/flash_01_004.jpg?alt=media&token=8bc09886-c481-4f3a-ace3-fca98f8a065d"
+                }
+                ,
+                {
+                    
+                    "url":"https://firebasestorage.googleapis.com/v0/b/qwerty-f63b1.appspot.com/o/flash_01_005-006.jpg?alt=media&token=202395ee-4e8a-43fc-8d20-331647d79edf"
+                },
+                {
+                    
+                    "url":"https://firebasestorage.googleapis.com/v0/b/qwerty-f63b1.appspot.com/o/flash_01_007.jpg?alt=media&token=101ee164-7f5e-4e2d-a917-ee2dfa9c4ccb"
+                },
+                {
+                    
+                    "url":"https://firebasestorage.googleapis.com/v0/b/qwerty-f63b1.appspot.com/o/flash_01_008.jpg?alt=media&token=b41299bb-aa9b-413b-8439-c81419293349"
+                },
+                {
+                    
+                    "url":"https://firebasestorage.googleapis.com/v0/b/qwerty-f63b1.appspot.com/o/flash_01_009-010.jpg?alt=media&token=3906d13a-7a63-4077-a3ce-b0b47cb7221c"
+                },
+                {
+                    
+                    "url":"https://firebasestorage.googleapis.com/v0/b/qwerty-f63b1.appspot.com/o/flash_01_011.jpg?alt=media&token=5a53c0a1-4c8f-463b-b9ac-8557a515624b"
+                },
+                {
+                    
+                    "url":"https://firebasestorage.googleapis.com/v0/b/qwerty-f63b1.appspot.com/o/flash_01_011.jpg?alt=media&token=5a53c0a1-4c8f-463b-b9ac-8557a515624b"
+                },
+                {
+                    
+                    "url":"https://firebasestorage.googleapis.com/v0/b/qwerty-f63b1.appspot.com/o/flash_01_013.jpg?alt=media&token=7b26dca3-d0d8-41ae-885c-b7d603ab4ddb"
+                },
+                {
+                    
+                    "url":"https://firebasestorage.googleapis.com/v0/b/qwerty-f63b1.appspot.com/o/flash_01_014.jpg?alt=media&token=7825cd2b-6561-4fe6-8a4a-5ca6b30ecbfd"
+                },
+                {
+                    
+                    "url":"https://firebasestorage.googleapis.com/v0/b/qwerty-f63b1.appspot.com/o/flash_01_015.jpg?alt=media&token=c86db907-6254-4a5d-b6ca-04e393110644"
+                },
+                {
+                    
+                    "url":"https://firebasestorage.googleapis.com/v0/b/qwerty-f63b1.appspot.com/o/flash_01_016.jpg?alt=media&token=4905af9d-79e2-4c0a-8759-399e5d77e05c"
+                },
+                {
+                    
+                    "url":"https://firebasestorage.googleapis.com/v0/b/qwerty-f63b1.appspot.com/o/flash_01_017.jpg?alt=media&token=e8d45aa0-9bf7-42e6-8a2d-4c1be4538aa8"
+                },
+                {
+                    
+                    "url":"https://firebasestorage.googleapis.com/v0/b/qwerty-f63b1.appspot.com/o/flash_01_019.jpg?alt=media&token=945e7a67-c26e-42c7-9cdd-4b33ab790eef"
+                },
+                {
+                    
+                    "url":"https://firebasestorage.googleapis.com/v0/b/qwerty-f63b1.appspot.com/o/flash_01_020.jpg?alt=media&token=34848b40-1e93-43ee-9467-192492e86e7e"
+                },
+                {
+                    
+                    "url":"https://firebasestorage.googleapis.com/v0/b/qwerty-f63b1.appspot.com/o/flash_01_021.jpg?alt=media&token=e60e7bc1-1007-43de-88ef-759a5113ead9"
+                },
+                {
+                    
+                    "url":"https://firebasestorage.googleapis.com/v0/b/qwerty-f63b1.appspot.com/o/flash_01_022.jpg?alt=media&token=7cca6706-4999-4b5c-a090-0a03206b4dd1"
+                },
+                {
+                    
+                    "url":"https://firebasestorage.googleapis.com/v0/b/qwerty-f63b1.appspot.com/o/flash_01_023.JPG?alt=media&token=94496461-ee76-4a6d-8a1e-cc90f70f5065"
+                },
+                {
+                    
+                    "url":"https://firebasestorage.googleapis.com/v0/b/qwerty-f63b1.appspot.com/o/flash_01_024.jpg?alt=media&token=d7db9f69-99fb-401c-9d12-9b1c6c4cb402"
+                },
+                {
+                    
+                    "url":"https://firebasestorage.googleapis.com/v0/b/qwerty-f63b1.appspot.com/o/flash_01_025.jpg?alt=media&token=1720bcd3-4abf-4b87-8731-ae25e41abba8"
+                },
+                {
+                    
+                    "url":"https://firebasestorage.googleapis.com/v0/b/qwerty-f63b1.appspot.com/o/flash_01_026.JPG?alt=media&token=e6a17813-8095-4a47-8c0b-77923e2b4dcb"
+                },
+                {
+                    
+                    "url":"https://firebasestorage.googleapis.com/v0/b/qwerty-f63b1.appspot.com/o/flash_01_027.jpg?alt=media&token=9613152f-28e1-4d78-a15a-3d8c1ed273ee"
+                },
+                {
+                    
+                    "url":"https://firebasestorage.googleapis.com/v0/b/qwerty-f63b1.appspot.com/o/flash_01_028.JPG?alt=media&token=7bdac997-291a-496e-bd78-25bf4dcd52f3"
+                },
+                {
+                    
+                    "url":"https://firebasestorage.googleapis.com/v0/b/qwerty-f63b1.appspot.com/o/flash_01_029-030.jpg?alt=media&token=f132c27f-8400-4ac4-87bb-bcfb269d29a6"
+                }
+            ]
+        }
 ]

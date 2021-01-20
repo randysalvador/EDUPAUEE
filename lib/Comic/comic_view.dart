@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 
 import 'package:edupauee/Comic/comic_controller.dart';
 import 'package:edupauee/Comic/comic_model.dart';
+import 'Comic_listImage.dart';
 
 class Comics extends StatelessWidget {
   final ComicController comicController =
@@ -27,48 +28,53 @@ class Comics extends StatelessWidget {
           backgroundColor: Color(0xFF1F2430),
           elevation: 0,
         ),
-        body: GestureDetector(
-          onTap: () {
-            print("press");
-          },
-          child: FutureBuilder(
-            future: _.getComicById(id_comic),
-            builder: (context, snapshot) {
-              if (snapshot.hasData) {
-                List<Comic> comic = snapshot.data ?? [];
-                return ListView.builder(
-                  itemCount: comic.length,
-                  itemBuilder: (context, index) => Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Stack(
+        body: FutureBuilder(
+          future: _.getPr(),
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              List<Comic> comic = snapshot.data ?? [];
+              return ListView.builder(
+                itemCount: comic.length,
+                itemBuilder: (context, index) => GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Comic_listImage(
+                          nombre: snapshot.data[index].nombre,
+                          comic_content_list: snapshot.data[index].contenido,
+                        ),
+                      ),
+                    );
+                  },
+                  child: Container(
+                    padding: EdgeInsets.all(10),
+                    width: 357,
+                    height: 594,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Container(
-                          width: 357,
-                          height: 594,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Card(
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(4.0),
-                                ),
-                                child: ImagenComic(
-                                  urlImage: snapshot.data[index].images,
-                                ),
-                                color: Color(0xFF1F2434),
-                              ),
-                            ],
+                        Card(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(4.0),
                           ),
+                          child: ImagenComic(
+                            urlImage: snapshot.data[index].cover,
+                          ),
+                          color: Color(0xFF1F2434),
                         ),
                       ],
                     ),
                   ),
-                );
-              } else {
-                return Center(child: CircularProgressIndicator());
-              }
-            },
-          ),
+                ),
+              );
+            } else {
+              return Center(
+                  child: CircularProgressIndicator(
+                backgroundColor: Color(0XFFFF6B3D),
+              ));
+            }
+          },
         ),
       ),
     );
@@ -108,10 +114,12 @@ class ImagenComic extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Image.network(
-        urlImage,
-        width: 357,
-        height: 560,
+      height: 560,
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: NetworkImage(urlImage),
+          fit: BoxFit.cover,
+        ),
       ),
     );
   }
