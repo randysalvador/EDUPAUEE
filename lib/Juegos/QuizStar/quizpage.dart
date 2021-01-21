@@ -43,8 +43,10 @@ class getjson extends StatelessWidget {
         if (mydata == null) {
           return Scaffold(
             body: Center(
-              child: Text(
-                "Cargando...",
+              child: Center(
+                child: CircularProgressIndicator(
+                  backgroundColor: Color(0XFFFF6B3D),
+                ),
               ),
             ),
           );
@@ -76,8 +78,8 @@ class _quizpageState extends State<quizpage> {
   bool disableAnswer = false;
   // extra varibale to iterate
   int j = 1;
-  int timer = 30;
-  String showtimer = "30";
+  int timer = 25;
+  String showtimer = "25";
   var random_array;
 
   Map<String, Color> btncolor = {
@@ -160,7 +162,7 @@ class _quizpageState extends State<quizpage> {
 
   void nextquestion() {
     canceltimer = false;
-    timer = 30;
+    timer = 25;
     setState(() {
       if (j < 10) {
         i = random_array[j];
@@ -208,10 +210,11 @@ class _quizpageState extends State<quizpage> {
 
   Widget choicebutton(String k) {
     return Padding(
-      padding: EdgeInsets.symmetric(
+      /*padding: EdgeInsets.symmetric(
         vertical: 10.0,
         horizontal: 20.0,
-      ),
+      ),*/
+      padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
       child: MaterialButton(
         onPressed: () => checkanswer(k),
         child: Text(
@@ -221,13 +224,15 @@ class _quizpageState extends State<quizpage> {
             fontFamily: "Alike",
             fontSize: 16.0,
           ),
-          maxLines: 1,
+          maxLines: 3,
         ),
         color: btncolor[k],
         splashColor: Colors.indigo[700],
         highlightColor: Colors.indigo[700],
-        minWidth: 200.0,
-        height: 45.0,
+        //minWidth: 200.0,
+        minWidth: double.infinity,
+
+        height: 80,
         shape:
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
       ),
@@ -248,17 +253,17 @@ class _quizpageState extends State<quizpage> {
       body: Column(
         children: <Widget>[
           Expanded(
-            flex: 3,
+            flex: 2,
             child: Container(
               padding: EdgeInsets.all(15.0),
               alignment: Alignment.bottomLeft,
               child: Text(
                 mydata[0][i.toString()],
                 style: TextStyle(
-                  fontSize: 16.0,
-                  fontFamily: "Quando",
-                  color: Colors.white,
-                ),
+                    fontSize: 18.0,
+                    fontFamily: "Quando",
+                    color: Colors.white,
+                    fontWeight: (FontWeight.bold)),
               ),
             ),
           ),

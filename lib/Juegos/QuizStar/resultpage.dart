@@ -22,13 +22,13 @@ class _resultpageState extends State<resultpage> {
   void initState() {
     if (marks < 20) {
       image = images[2];
-      message = "You Should Try Hard..\n" + "You Scored $marks";
+      message = "Deberías esforzarte..\n" + "Has anotado: $marks";
     } else if (marks < 35) {
       image = images[1];
-      message = "You Can Do Better..\n" + "You Scored $marks";
+      message = "Puedes hacerlo mejor..\n" + "Has anotado: $marks";
     } else {
       image = images[0];
-      message = "You Did Very Well..\n" + "You Scored $marks";
+      message = "Lo hiciste muy bien..\n" + "Has anotado: $marks";
     }
     super.initState();
   }
@@ -40,7 +40,7 @@ class _resultpageState extends State<resultpage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Result",
+          "Resultado",
         ),
       ),
       body: Column(
@@ -96,7 +96,7 @@ class _resultpageState extends State<resultpage> {
                     ));
                   },
                   child: Text(
-                    "Continue",
+                    "Continuar",
                     style: TextStyle(
                       fontSize: 18.0,
                     ),
