@@ -1,17 +1,17 @@
 import 'package:edupauee/Juegos/QuizStar/home.dart';
-import 'package:edupauee/Juegos/QuizStar/main.dart';
+import 'package:edupauee/Juegos/QuizStar/splash.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 //import 'package:get/get.dart';
-class Juegos extends StatefulWidget {
+class JuegosC extends StatefulWidget {
   @override
   _JuegosState createState() => _JuegosState();
 }
 
-class _JuegosState extends State<Juegos> {
+class _JuegosState extends State<JuegosC> {
   List<String> images = [
     "assets/images/juego1.png",
     "assets/images/juego2.png",
@@ -70,11 +70,11 @@ class _JuegosState extends State<Juegos> {
       ),
       child: InkWell(
         onTap: () {
-          Navigator.of(context).pushReplacement(MaterialPageRoute(
+          Navigator.of(context).push(MaterialPageRoute(
             // in changelog 1 we will pass the langname name to ther other widget class
             // this name will be used to open a particular JSON file
             // for a particular language
-            builder: (context) => homepage(),
+            builder: (context) => Splashscreen(),
           ));
         },
         child: Material(

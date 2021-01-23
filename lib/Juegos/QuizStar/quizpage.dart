@@ -5,26 +5,26 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:edupauee/Juegos/QuizStar/resultpage.dart';
 
-class getjson extends StatelessWidget {
+class Getjson extends StatelessWidget {
   // accept the langname as a parameter
 
   String langname;
-  getjson(this.langname);
+  Getjson(this.langname);
   String assettoload;
 
   // a function
   // sets the asset to a particular JSON file
   // and opens the JSON
   setasset() {
-    if (langname == "Python") {
-      assettoload = "assets/python.json";
+    if (langname == "Energía renovable") {
+      assettoload = "assets/sedener.json";
     } else if (langname == "Java") {
       assettoload = "assets/java.json";
     } else if (langname == "Javascript") {
       assettoload = "assets/js.json";
     } else if (langname == "C++") {
       assettoload = "assets/cpp.json";
-    } else {
+    } else if (langname == "Reciclaje") {
       assettoload = "assets/linux.json";
     }
   }
@@ -51,22 +51,22 @@ class getjson extends StatelessWidget {
             ),
           );
         } else {
-          return quizpage(mydata: mydata);
+          return Quizpage(mydata: mydata);
         }
       },
     );
   }
 }
 
-class quizpage extends StatefulWidget {
+class Quizpage extends StatefulWidget {
   final List mydata;
 
-  quizpage({Key key, @required this.mydata}) : super(key: key);
+  Quizpage({Key key, @required this.mydata}) : super(key: key);
   @override
   _quizpageState createState() => _quizpageState(mydata);
 }
 
-class _quizpageState extends State<quizpage> {
+class _quizpageState extends State<Quizpage> {
   final List mydata;
   _quizpageState(this.mydata);
 
@@ -168,8 +168,8 @@ class _quizpageState extends State<quizpage> {
         i = random_array[j];
         j++;
       } else {
-        Navigator.of(context).pushReplacement(MaterialPageRoute(
-          builder: (context) => resultpage(marks: marks),
+        Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => Resultpage(marks: marks),
         ));
       }
       btncolor["a"] = Colors.indigoAccent;
@@ -232,7 +232,7 @@ class _quizpageState extends State<quizpage> {
         //minWidth: 200.0,
         minWidth: double.infinity,
 
-        height: 80,
+        height: 55,
         shape:
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
       ),

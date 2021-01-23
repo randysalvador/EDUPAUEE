@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:edupauee/Juegos/QuizStar/home.dart';
 
-class resultpage extends StatefulWidget {
+class Resultpage extends StatefulWidget {
   int marks;
-  resultpage({Key key, @required this.marks}) : super(key: key);
+  Resultpage({Key key, @required this.marks}) : super(key: key);
   @override
   _resultpageState createState() => _resultpageState(marks);
 }
 
-class _resultpageState extends State<resultpage> {
+class _resultpageState extends State<Resultpage> {
   List<String> images = [
     "images/success.png",
     "images/good.png",
@@ -39,6 +39,7 @@ class _resultpageState extends State<resultpage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: Text(
           "Resultado",
         ),
@@ -66,19 +67,28 @@ class _resultpageState extends State<resultpage> {
                       ),
                     ),
                     Padding(
-                        padding: EdgeInsets.symmetric(
-                          vertical: 5.0,
-                          horizontal: 15.0,
-                        ),
-                        child: Center(
-                          child: Text(
-                            message,
-                            style: TextStyle(
-                              fontSize: 18.0,
-                              fontFamily: "Quando",
-                            ),
+                      padding: EdgeInsets.symmetric(
+                        vertical: 5.0,
+                        horizontal: 15.0,
+                      ),
+                      child: Center(
+                        child: Text(
+                          message,
+                          style: TextStyle(
+                            fontSize: 18.0,
+                            fontFamily: "Quando",
                           ),
-                        )),
+                        ),
+                      ),
+                    ),
+                    Container(
+                      height: 40,
+                      width: double.infinity,
+                      color: Colors.amberAccent,
+                      child: Center(
+                        child: Text("♥♣"),
+                      ),
+                    ),
                   ],
                 ),
               ),
@@ -92,7 +102,7 @@ class _resultpageState extends State<resultpage> {
                 OutlineButton(
                   onPressed: () {
                     Navigator.of(context).pushReplacement(MaterialPageRoute(
-                      builder: (context) => homepage(),
+                      builder: (context) => Homepage(),
                     ));
                   },
                   child: Text(

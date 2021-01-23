@@ -9,6 +9,8 @@ import 'package:edupauee/Juegos/juego_view.dart';
 import 'package:edupauee/OnBoarding/onBoarding_view.dart';
 import 'package:edupauee/Explorar/explorar_view.dart';
 
+import 'package:edupauee/Juegos/QuizStar/home.dart';
+
 class Router {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -17,7 +19,7 @@ class Router {
       case 'explorar':
         return MaterialPageRoute(builder: (_) => Explores());
       case 'juegos':
-        return MaterialPageRoute(builder: (_) => Juegos());
+        return MaterialPageRoute(builder: (_) => JuegosC());
       case 'comic':
         return MaterialPageRoute(builder: (_) => Comics());
       case 'challenges':
@@ -26,6 +28,8 @@ class Router {
         return MaterialPageRoute(builder: (_) => About());
       case 'video':
         return MaterialPageRoute(builder: (_) => Video());
+      case 'homepage':
+        return MaterialPageRoute(builder: (_) => Homepage());
       default:
         return MaterialPageRoute(builder: (_) {
           return Scaffold(

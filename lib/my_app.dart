@@ -15,7 +15,7 @@ class _MyAppState extends State<MyApp> {
   int _selectedIndex = 0;
   List<Widget> routesDataNavigationBar = [
     Explores(),
-    Juegos(),
+    JuegosC(),
     Comics(),
     Challenges(),
     About()

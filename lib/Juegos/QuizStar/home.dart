@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:edupauee/Juegos/QuizStar/quizpage.dart';
 
-class homepage extends StatefulWidget {
+class Homepage extends StatefulWidget {
   @override
   _homepageState createState() => _homepageState();
 }
 
-class _homepageState extends State<homepage> {
+class _homepageState extends State<Homepage> {
   List<String> images = [
     "images/energiaR.png",
     "images/reciclaje.jpg",
@@ -27,11 +27,11 @@ class _homepageState extends State<homepage> {
       ),
       child: InkWell(
         onTap: () {
-          Navigator.of(context).pushReplacement(MaterialPageRoute(
+          Navigator.of(context).push(MaterialPageRoute(
             // in changelog 1 we will pass the langname name to ther other widget class
             // this name will be used to open a particular JSON file
             // for a particular language
-            builder: (context) => getjson(langname),
+            builder: (context) => Getjson(langname),
           ));
         },
         child: Material(

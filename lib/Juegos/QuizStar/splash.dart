@@ -2,18 +2,18 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:edupauee/Juegos/QuizStar/home.dart';
 
-class splashscreen extends StatefulWidget {
+class Splashscreen extends StatefulWidget {
   @override
   _splashscreenState createState() => _splashscreenState();
 }
 
-class _splashscreenState extends State<splashscreen> {
+class _splashscreenState extends State<Splashscreen> {
   @override
   void initState() {
     super.initState();
-    Timer(Duration(seconds: 3), () {
+    Timer(Duration(seconds: 1), () {
       Navigator.of(context).pushReplacement(MaterialPageRoute(
-        builder: (context) => homepage(),
+        builder: (context) => Homepage(),
       ));
     });
   }
@@ -23,10 +23,10 @@ class _splashscreenState extends State<splashscreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.indigo,
+      backgroundColor: Color(0xFF1F2430),
       body: Center(
         child: Text(
-          "Quizstar\nTest Yourself !!",
+          "QuizSedener\nHas tu prueba !!",
           style: TextStyle(
             fontSize: 50.0,
             color: Colors.white,

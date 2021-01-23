@@ -11,7 +11,7 @@ class StepModel {
     ),
     StepModel(
       id: 2,
-      text: "Juega\n y compite con otros jugadores\n y convatan",
+      text: "Juega\n y pon aprueba tos conocimientos\n sobre la energía",
     ),
     StepModel(
       id: 3,

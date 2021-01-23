@@ -9,6 +9,10 @@ import 'package:edupauee/Explorar/explorarVideo_view.dart';
 import 'package:edupauee/Juegos/juego_view.dart';
 import 'package:edupauee/OnBoarding/onBoarding_view.dart';
 
+import 'package:edupauee/Juegos/QuizStar/home.dart';
+import 'package:edupauee/Juegos/QuizStar/quizpage.dart';
+import 'package:edupauee/Juegos/QuizStar/resultpage.dart';
+
 void main() {
   runApp(
     MaterialApp(
@@ -33,7 +37,7 @@ class Router {
       case 'app':
         return MaterialPageRoute(builder: (_) => MyApp());
       case 'juegos':
-        return MaterialPageRoute(builder: (_) => Juegos());
+        return MaterialPageRoute(builder: (_) => JuegosC());
       case 'comic':
         return MaterialPageRoute(builder: (_) => Comics());
       case 'challenges':
@@ -42,6 +46,9 @@ class Router {
         return MaterialPageRoute(builder: (_) => About());
       case 'video':
         return MaterialPageRoute(builder: (_) => Video());
+      case 'homegame':
+        return MaterialPageRoute(builder: (_) => Homepage());
+
       default:
         return MaterialPageRoute(builder: (_) {
           return Scaffold(
