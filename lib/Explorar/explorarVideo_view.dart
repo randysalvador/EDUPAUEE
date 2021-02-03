@@ -107,19 +107,43 @@ class _ChewieDemoState extends State<Video> {
       child: OrientationBuilder(
         builder: (BuildContext context, Orientation orientation) {
           if (orientation == Orientation.landscape) {
-            return Scaffold(
-              body: youtubeHierarchy(),
-              backgroundColor: Color(0xFF1F2430),
+            return Container(
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                image: AssetImage("assets/images/FondoEdu.png"),
+                fit: BoxFit.cover,
+              )),
+              child: Scaffold(
+                appBar: AppBar(
+                  backgroundColor: Color(0xFF9B2242),
+                  title: titulo(context),
+                  elevation: 0,
+                ),
+                body: youtubeHierarchy(),
+                backgroundColor: Colors.transparent,
+              ),
             );
           } else {
-            return Scaffold(
-              appBar: AppBar(
-                backgroundColor: Color(0xFF1F2430),
-                title: titulo(context),
-                elevation: 0,
+            return Container(
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage("assets/images/fondoBEDU.png"),
+                  fit: BoxFit.cover,
+                ),
               ),
-              body: youtubeHierarchy(),
-              backgroundColor: Color(0xFF1F2430),
+              child: Scaffold(
+                appBar: AppBar(
+                  automaticallyImplyLeading: true,
+                  backgroundColor: Colors.transparent,
+                  shadowColor: Colors.transparent,
+                  flexibleSpace: Container(
+                    alignment: Alignment.bottomCenter,
+                    child: Imagen(),
+                  ),
+                ),
+                body: youtubeHierarchy(),
+                backgroundColor: Colors.transparent,
+              ),
             );
           }
         },
@@ -185,4 +209,19 @@ Widget titulo(BuildContext context) {
       ),
     ],
   );
+}
+
+class Imagen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    AssetImage assetImage = AssetImage('assets/images/appbarlogo.png');
+    Image image = Image(
+      image: assetImage,
+      width: 335,
+      height: 55,
+    );
+    return Container(
+      child: image,
+    );
+  }
 }

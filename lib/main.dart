@@ -19,8 +19,6 @@ void main() {
       title: 'EDUPAUEE',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
-        primaryColor: Color(0xFF1F2430),
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       initialRoute: '/',

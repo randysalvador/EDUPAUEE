@@ -37,91 +37,93 @@ class _resultpageState extends State<Resultpage> {
   _resultpageState(this.marks);
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        title: Text(
-          "Resultado",
+    return Container(
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage("assets/images/fondoBEDU.png"),
+          fit: BoxFit.cover,
         ),
       ),
-      body: Column(
-        children: <Widget>[
-          Expanded(
-            flex: 8,
-            child: Material(
-              elevation: 10.0,
-              child: Container(
-                child: Column(
-                  children: <Widget>[
-                    Material(
-                      child: Container(
-                        width: 300.0,
-                        height: 300.0,
-                        child: ClipRect(
-                          child: Image(
-                            image: AssetImage(
-                              image,
+      child: Scaffold(
+        appBar: AppBar(
+          automaticallyImplyLeading: false,
+          title: Text(
+            "Resultado",
+          ),
+          backgroundColor: Color(0xFF9B2242),
+        ),
+        body: ListView(
+          children: <Widget>[
+            Expanded(
+              flex: 8,
+              child: Material(
+                elevation: 10.0,
+                child: Container(
+                  child: Column(
+                    children: <Widget>[
+                      Material(
+                        child: Container(
+                          width: 300.0,
+                          height: 300.0,
+                          child: ClipRect(
+                            child: Image(
+                              image: AssetImage(
+                                image,
+                              ),
                             ),
                           ),
                         ),
                       ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.symmetric(
-                        vertical: 5.0,
-                        horizontal: 15.0,
-                      ),
-                      child: Center(
-                        child: Text(
-                          message,
-                          style: TextStyle(
-                            fontSize: 18.0,
-                            fontFamily: "Quando",
+                      Padding(
+                        padding: EdgeInsets.symmetric(
+                          vertical: 5.0,
+                          horizontal: 15.0,
+                        ),
+                        child: Center(
+                          child: Text(
+                            message,
+                            style: TextStyle(
+                              fontSize: 18.0,
+                              fontFamily: "Quando",
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                    Container(
-                      height: 40,
-                      width: double.infinity,
-                      color: Colors.amberAccent,
-                      child: Center(
-                        child: Text("♥♣"),
-                      ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),
-          ),
-          Expanded(
-            flex: 4,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                OutlineButton(
-                  onPressed: () {
-                    Navigator.of(context).pushReplacement(MaterialPageRoute(
-                      builder: (context) => Homepage(),
-                    ));
-                  },
-                  child: Text(
-                    "Continuar",
-                    style: TextStyle(
-                      fontSize: 18.0,
+            Expanded(
+              flex: 4,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  OutlineButton(
+                    onPressed: () {
+                      Navigator.of(context).pushReplacement(MaterialPageRoute(
+                        builder: (context) => Homepage(),
+                      ));
+                    },
+                    child: Text(
+                      "Continuar",
+                      style: TextStyle(
+                        fontSize: 18.0,
+                      ),
                     ),
-                  ),
-                  padding: EdgeInsets.symmetric(
-                    vertical: 10.0,
-                    horizontal: 25.0,
-                  ),
-                  borderSide: BorderSide(width: 3.0, color: Colors.indigo),
-                  splashColor: Colors.indigoAccent,
-                )
-              ],
-            ),
-          )
-        ],
+                    padding: EdgeInsets.symmetric(
+                      vertical: 10.0,
+                      horizontal: 25.0,
+                    ),
+                    borderSide: BorderSide(width: 3.0, color: Colors.indigo),
+                    splashColor: Colors.indigoAccent,
+                  )
+                ],
+              ),
+            )
+          ],
+        ),
+        backgroundColor: Colors.transparent,
       ),
     );
   }

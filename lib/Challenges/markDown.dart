@@ -30,88 +30,101 @@ class DetailsMarkDown extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<ChallengeController>(
       init: detailsController,
-      builder: (_) => Scaffold(
-        appBar: AppBar(
-          backgroundColor: Color(0xFF1F2430),
-          title: const Text(
-            "Challenge",
-            style: TextStyle(color: Colors.white),
+      builder: (_) => Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/images/fondoBEDU.png"),
+            fit: BoxFit.cover,
           ),
         ),
-        body: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
+        child: Scaffold(
+          backgroundColor: Colors.transparent,
+          appBar: AppBar(
+            backgroundColor: Color(0xFF9B2242),
+            title: const Text(
+              "Experimentos",
+              style: TextStyle(color: Colors.white),
+            ),
+            elevation: 0,
+          ),
+          body: ListView(
             children: [
-              Container(
-                padding: EdgeInsets.fromLTRB(10, 0, 10, 10),
-                height: 100,
-                width: double.infinity,
-                child: Text(
-                  title,
-                  style: GoogleFonts.poppins(
-                      fontSize: 25,
-                      color: Color(0xFFFFFFFF),
-                      fontWeight: FontWeight.bold),
-                ),
-              ),
-              Container(
-                padding: EdgeInsets.all(10),
-                width: 343,
-                height: 157,
-                child: ImagenChallenge(
-                  urlImage: cover,
-                ),
-              ),
-              Container(
-                padding: EdgeInsets.all(10),
-                alignment: AlignmentDirectional.centerStart,
-                child: Text(
-                  "Materiales",
-                  style: GoogleFonts.poppins(
-                      fontSize: 14,
-                      color: Color(0xFFFFFFFF),
-                      fontWeight: FontWeight.bold),
-                ),
-              ),
-              Container(
-                alignment: Alignment.topLeft,
-                margin: EdgeInsets.all(20),
-                child: MarkdownBody(
-                  data: materiales,
-                  styleSheet: MarkdownStyleSheet(
-                    h2: TextStyle(color: Colors.blue, fontSize: 40),
-                  ),
-                ),
-              ),
-              Container(
-                padding: EdgeInsets.all(10),
-                alignment: AlignmentDirectional.centerStart,
-                child: Text(
-                  "Instrucciones",
-                  style: GoogleFonts.poppins(
-                      fontSize: 14,
-                      color: Color(0xFFFFFFFF),
-                      fontWeight: FontWeight.bold),
-                ),
-              ),
-              Container(
-                margin: EdgeInsets.all(20),
-                child: MarkdownBody(
-                  data: description,
-                  styleSheet: MarkdownStyleSheet(
-                    h2: TextStyle(color: Colors.blue, fontSize: 40),
-                  ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  children: [
+                    Container(
+                      padding: EdgeInsets.fromLTRB(10, 0, 10, 10),
+                      height: 100,
+                      width: double.infinity,
+                      child: Text(
+                        title,
+                        style: GoogleFonts.poppins(
+                            fontSize: 25,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                    Container(
+                      padding: EdgeInsets.all(10),
+                      width: 343,
+                      height: 157,
+                      child: ImagenChallenge(
+                        urlImage: cover,
+                      ),
+                    ),
+                    Container(
+                      padding: EdgeInsets.all(10),
+                      alignment: AlignmentDirectional.centerStart,
+                      child: Text(
+                        "Materiales",
+                        style: GoogleFonts.poppins(
+                            fontSize: 14,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                    Container(
+                      alignment: Alignment.topLeft,
+                      margin: EdgeInsets.all(20),
+                      child: MarkdownBody(
+                        data: materiales,
+                        styleSheet: MarkdownStyleSheet(
+                          p: TextStyle(color: Colors.black, fontSize: 12),
+                        ),
+                      ),
+                    ),
+                    Container(
+                      padding: EdgeInsets.all(10),
+                      alignment: AlignmentDirectional.centerStart,
+                      child: Text(
+                        "Instrucciones",
+                        style: GoogleFonts.poppins(
+                            fontSize: 14,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                    Container(
+                      margin: EdgeInsets.all(20),
+                      child: MarkdownBody(
+                        data: description,
+                        styleSheet: MarkdownStyleSheet(
+                          p: TextStyle(color: Colors.black, fontSize: 12),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ],
           ),
         ),
-        backgroundColor: Color(0xFF1F2430),
       ),
     );
   }
 
-  Widget title2(BuildContext context) {
+  /*Widget title2(BuildContext context) {
     return GetBuilder<ChallengeController>(
       init: detailsController,
       builder: (_) => Column(
@@ -131,7 +144,7 @@ class DetailsMarkDown extends StatelessWidget {
                         snapshot.data[index].title,
                         style: GoogleFonts.poppins(
                             fontSize: 20,
-                            color: Color(0xFFFFFFFF),
+                            color: Colors.black,
                             fontWeight: FontWeight.bold),
                       ),
                     ),
@@ -145,7 +158,7 @@ class DetailsMarkDown extends StatelessWidget {
         ],
       ),
     );
-  }
+  }*/
 }
 
 class ImagenChallenge extends StatelessWidget {

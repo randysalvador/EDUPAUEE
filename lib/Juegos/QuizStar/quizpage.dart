@@ -243,65 +243,73 @@ class _quizpageState extends State<Quizpage> {
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations(
         [DeviceOrientation.portraitDown, DeviceOrientation.portraitUp]);
-    return Scaffold(
-      backgroundColor: Color(0xFF1F2430),
-      appBar: AppBar(
-        title: Text("Quiz"),
-        backgroundColor: Color(0xFF1F2430),
-        elevation: 0,
+    return Container(
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage("assets/images/fondoBEDU.png"),
+          fit: BoxFit.cover,
+        ),
       ),
-      body: Column(
-        children: <Widget>[
-          Expanded(
-            flex: 2,
-            child: Container(
-              padding: EdgeInsets.all(15.0),
-              alignment: Alignment.bottomLeft,
-              child: Text(
-                mydata[0][i.toString()],
-                style: TextStyle(
-                    fontSize: 18.0,
-                    fontFamily: "Quando",
-                    color: Colors.white,
-                    fontWeight: (FontWeight.bold)),
-              ),
-            ),
-          ),
-          Expanded(
-            flex: 6,
-            child: AbsorbPointer(
-              absorbing: disableAnswer,
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        appBar: AppBar(
+          title: Text("Quiz"),
+          backgroundColor: Color(0xFF9B2242),
+          elevation: 0,
+        ),
+        body: Column(
+          children: <Widget>[
+            Expanded(
+              flex: 2,
               child: Container(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    choicebutton('a'),
-                    choicebutton('b'),
-                    choicebutton('c'),
-                    choicebutton('d'),
-                  ],
+                padding: EdgeInsets.all(15.0),
+                alignment: Alignment.bottomLeft,
+                child: Text(
+                  mydata[0][i.toString()],
+                  style: TextStyle(
+                      fontSize: 18.0,
+                      fontFamily: "Quando",
+                      color: Colors.black,
+                      fontWeight: (FontWeight.bold)),
                 ),
               ),
             ),
-          ),
-          Expanded(
-            flex: 1,
-            child: Container(
-              alignment: Alignment.topCenter,
-              child: Center(
-                child: Text(
-                  showtimer,
-                  style: TextStyle(
-                    fontSize: 35.0,
-                    fontWeight: FontWeight.w700,
-                    fontFamily: 'Times New Roman',
-                    color: Color(0XFFFF6B3D),
+            Expanded(
+              flex: 6,
+              child: AbsorbPointer(
+                absorbing: disableAnswer,
+                child: Container(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      choicebutton('a'),
+                      choicebutton('b'),
+                      choicebutton('c'),
+                      choicebutton('d'),
+                    ],
                   ),
                 ),
               ),
             ),
-          ),
-        ],
+            Expanded(
+              flex: 1,
+              child: Container(
+                alignment: Alignment.topCenter,
+                child: Center(
+                  child: Text(
+                    showtimer,
+                    style: TextStyle(
+                      fontSize: 35.0,
+                      fontWeight: FontWeight.w700,
+                      fontFamily: 'Times New Roman',
+                      color: Color(0xFF9B2242),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

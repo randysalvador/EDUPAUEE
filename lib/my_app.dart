@@ -27,29 +27,29 @@ class _MyAppState extends State<MyApp> {
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex,
         type: BottomNavigationBarType.fixed,
-        backgroundColor: Color(0xFFE7503B),
+        backgroundColor: Color(0xFF9B2242),
         fixedColor: Color(0xFFFFFFFF),
         items: [
           BottomNavigationBarItem(
               icon: Icon(Icons.home),
               title: Text('Explorar'),
-              backgroundColor: Color(0xFFE7503B)),
+              backgroundColor: Color(0xFF9B2242)),
           BottomNavigationBarItem(
               icon: Icon(Icons.games_outlined),
               title: Text('Juegos'),
-              backgroundColor: Color(0xFFE7503B)),
+              backgroundColor: Color(0xFF9B2242)),
           BottomNavigationBarItem(
               icon: Icon(Icons.book),
               title: Text('Comic'),
-              backgroundColor: Color(0xFFE7503B)),
+              backgroundColor: Color(0xFF9B2242)),
           BottomNavigationBarItem(
               icon: Icon(Icons.local_activity),
-              title: Text('Challenge'),
-              backgroundColor: Color(0xFFE7503B)),
+              title: Text('Experimenta'),
+              backgroundColor: Color(0xFF9B2242)),
           BottomNavigationBarItem(
               icon: Icon(Icons.info),
-              title: Text('About'),
-              backgroundColor: Color(0xFFE7503B)),
+              title: Text('Tips'),
+              backgroundColor: Color(0xFF9B2242)),
         ],
         onTap: (index) {
           setState(() {

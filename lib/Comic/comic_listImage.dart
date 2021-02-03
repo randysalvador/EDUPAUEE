@@ -31,52 +31,60 @@ class Comic_listImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<ComicController>(
       init: comicController,
-      builder: (_) => Scaffold(
-        backgroundColor: Color(0xFF1F2430),
-        appBar: AppBar(
-          automaticallyImplyLeading: true,
-          title: titulo(context),
-          backgroundColor: Color(0xFF1F2430),
-          elevation: 0,
+      builder: (_) => Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/images/fondoBEDU.png"),
+            fit: BoxFit.cover,
+          ),
         ),
-        body: FutureBuilder(
-          future: _.getPr(),
-          builder: (context, snapshot) {
-            if (snapshot.hasData) {
-              //List<dynamic> comic = snapshot.data ?? [];
-              return ListView.builder(
-                itemCount: comic_content_list.length,
-                itemBuilder: (context, index) => Column(
-                  children: [
-                    Container(
-                      padding: EdgeInsets.all(10),
-                      height: 600,
-                      width: MediaQuery.of(context).size.width,
-                      margin: EdgeInsets.symmetric(
-                        horizontal: 5,
-                      ),
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: NetworkImage(
-                              comic_content_list[index].url.toString()),
-                          fit: BoxFit.cover,
+        child: Scaffold(
+          backgroundColor: Colors.transparent,
+          appBar: AppBar(
+            automaticallyImplyLeading: true,
+            title: titulo(context),
+            backgroundColor: Color(0xFF9B2242),
+            elevation: 0,
+          ),
+          body: FutureBuilder(
+            future: _.getPr(),
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                //List<dynamic> comic = snapshot.data ?? [];
+                return ListView.builder(
+                  itemCount: comic_content_list.length,
+                  itemBuilder: (context, index) => Column(
+                    children: [
+                      Container(
+                        padding: EdgeInsets.all(10),
+                        height: 600,
+                        width: MediaQuery.of(context).size.width,
+                        margin: EdgeInsets.symmetric(
+                          horizontal: 5,
+                        ),
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: NetworkImage(
+                                comic_content_list[index].url.toString()),
+                            fit: BoxFit.cover,
+                          ),
                         ),
                       ),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                  ],
-                ),
-              );
-            } else {
-              return Center(
-                child: CircularProgressIndicator(
-                  backgroundColor: Color(0xFFFF6B3D),
-                ),
-              );
-            }
-          },
+                      SizedBox(
+                        height: 10,
+                      ),
+                    ],
+                  ),
+                );
+              } else {
+                return Center(
+                  child: CircularProgressIndicator(
+                    backgroundColor: Color(0xFFFF6B3D),
+                  ),
+                );
+              }
+            },
+          ),
         ),
       ),
     );

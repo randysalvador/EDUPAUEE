@@ -79,6 +79,10 @@ flutter:
     - assets/stores.json
     - assets/images/videos.json
     - assets/images/quizt.png
+    - assets/images/FondoEdu.png
+    - assets/images/appbarlogo.png
+    - assets/images/appbarlogo2.png
+    - assets/images/fondoBEDU.png
     - images/energiaR.png
     - images/reciclaje.jpg
     - assets/

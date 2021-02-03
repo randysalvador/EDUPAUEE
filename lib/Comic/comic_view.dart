@@ -20,61 +20,72 @@ class Comics extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<ComicController>(
       init: comicController,
-      builder: (_) => Scaffold(
-        backgroundColor: Color(0xFF1F2430),
-        appBar: AppBar(
-          automaticallyImplyLeading: false,
-          title: titulo(context),
-          backgroundColor: Color(0xFF1F2430),
-          elevation: 0,
+      builder: (_) => Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/images/FondoEdu.png"),
+            fit: BoxFit.cover,
+          ),
         ),
-        body: FutureBuilder(
-          future: _.getPr(),
-          builder: (context, snapshot) {
-            if (snapshot.hasData) {
-              List<Comic> comic = snapshot.data ?? [];
-              return ListView.builder(
-                itemCount: comic.length,
-                itemBuilder: (context, index) => GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => Comic_listImage(
-                          nombre: snapshot.data[index].nombre,
-                          comic_content_list: snapshot.data[index].contenido,
+        child: Scaffold(
+          backgroundColor: Colors.transparent,
+          appBar: AppBar(
+            automaticallyImplyLeading: false,
+            backgroundColor: Colors.transparent,
+            shadowColor: Colors.transparent,
+            flexibleSpace: Container(
+              alignment: Alignment.bottomCenter,
+              child: Imagen(),
+            ),
+          ),
+          body: FutureBuilder(
+            future: _.getPr(),
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                List<Comic> comic = snapshot.data ?? [];
+                return ListView.builder(
+                  itemCount: comic.length,
+                  itemBuilder: (context, index) => GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => Comic_listImage(
+                            nombre: snapshot.data[index].nombre,
+                            comic_content_list: snapshot.data[index].contenido,
+                          ),
                         ),
+                      );
+                    },
+                    child: Container(
+                      padding: EdgeInsets.all(10),
+                      width: 357,
+                      height: 594,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Card(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(4.0),
+                            ),
+                            child: ImagenComic(
+                              urlImage: snapshot.data[index].cover,
+                            ),
+                            color: Color(0xFF1F2434),
+                          ),
+                        ],
                       ),
-                    );
-                  },
-                  child: Container(
-                    padding: EdgeInsets.all(10),
-                    width: 357,
-                    height: 594,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Card(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(4.0),
-                          ),
-                          child: ImagenComic(
-                            urlImage: snapshot.data[index].cover,
-                          ),
-                          color: Color(0xFF1F2434),
-                        ),
-                      ],
                     ),
                   ),
-                ),
-              );
-            } else {
-              return Center(
-                  child: CircularProgressIndicator(
-                backgroundColor: Color(0XFFFF6B3D),
-              ));
-            }
-          },
+                );
+              } else {
+                return Center(
+                    child: CircularProgressIndicator(
+                  backgroundColor: Color(0XFFFF6B3D),
+                ));
+              }
+            },
+          ),
         ),
       ),
     );
@@ -121,6 +132,21 @@ class ImagenComic extends StatelessWidget {
           fit: BoxFit.cover,
         ),
       ),
+    );
+  }
+}
+
+class Imagen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    AssetImage assetImage = AssetImage('assets/images/appbarlogo.png');
+    Image image = Image(
+      image: assetImage,
+      width: 335,
+      height: 55,
+    );
+    return Container(
+      child: image,
     );
   }
 }

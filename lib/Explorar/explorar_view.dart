@@ -19,118 +19,112 @@ class Explores extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<ExplorarController>(
       init: explorarController,
-      builder: (_) => Scaffold(
-        appBar: AppBar(
-          automaticallyImplyLeading: false,
-          title: titulo(context),
-          backgroundColor: Color(0xFF1F2430),
-          elevation: 0,
+      builder: (_) => Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/images/FondoEdu.png"),
+            fit: BoxFit.cover,
+          ),
         ),
-        body: FutureBuilder(
-          future: _.getExplorargeById(id_explore),
-          builder: (context, snapshot) {
-            if (snapshot.hasData) {
-              List<Explore> explores = snapshot.data ?? [];
-              return ListView.builder(
-                itemCount: explores.length,
-                itemBuilder: (context, index) => GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => Video(
-                          url: snapshot.data[index].url,
-                          //url: 'https://flutter.github.io/assets-for-api-docs/assets/videos/butterfly.mp4',
+        child: Scaffold(
+          appBar: AppBar(
+            automaticallyImplyLeading: false,
+            backgroundColor: Colors.transparent,
+            shadowColor: Colors.transparent,
+            flexibleSpace: Container(
+              alignment: Alignment.bottomCenter,
+              child: Imagen(),
+            ),
+          ),
+          body: FutureBuilder(
+            future: _.getExplorargeById(id_explore),
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                List<Explore> explores = snapshot.data ?? [];
+                return ListView.builder(
+                  itemCount: explores.length,
+                  itemBuilder: (context, index) => GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => Video(
+                            url: snapshot.data[index].url,
+                            //url: 'https://flutter.github.io/assets-for-api-docs/assets/videos/butterfly.mp4',
+                          ),
                         ),
-                      ),
-                    );
-                  },
-                  child: Stack(
-                    children: [
-                      Container(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Container(
-                              height: 200,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                image: DecorationImage(
-                                    image: NetworkImage(
-                                        snapshot.data[index].cover),
-                                    fit: BoxFit.cover),
+                      );
+                    },
+                    child: Stack(
+                      children: [
+                        Container(
+                          padding: EdgeInsets.fromLTRB(24, 0, 24, 0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              SizedBox(
+                                height: 13,
                               ),
-                              child: Align(
-                                alignment: Alignment.bottomCenter,
-                                child: Container(
-                                  height: 50,
-                                  width: MediaQuery.of(context).size.width,
-                                  child: Material(
-                                    borderRadius: BorderRadius.only(
-                                      bottomLeft: Radius.circular(10),
-                                      bottomRight: Radius.circular(10),
-                                    ),
-                                    color: Color(0xFF1F2430).withOpacity(0.8),
-                                    child: Align(
-                                      //alignment: Alignment.centerLeft,
-                                      alignment: Alignment.centerLeft,
-                                      child: Text(
-                                        snapshot.data[index].title,
-                                        style: GoogleFonts.poppins(
-                                            fontSize: 12,
-                                            color: Color(0XFFFFFFFF),
-                                            fontWeight: FontWeight.bold),
+                              Container(
+                                height: 200,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  image: DecorationImage(
+                                      image: NetworkImage(
+                                          snapshot.data[index].cover),
+                                      fit: BoxFit.cover),
+                                ),
+                                child: Align(
+                                  alignment: Alignment.bottomCenter,
+                                  child: Container(
+                                    height: 40,
+                                    width: MediaQuery.of(context).size.width,
+                                    child: Material(
+                                      borderRadius: BorderRadius.only(
+                                        bottomLeft: Radius.circular(10),
+                                        bottomRight: Radius.circular(10),
+                                      ),
+                                      color: Color(0xFFBB9959).withOpacity(0.8),
+                                      child: Align(
+                                        //alignment: Alignment.centerLeft,
+                                        alignment: Alignment.centerLeft,
+                                        child: Container(
+                                          padding:
+                                              EdgeInsets.fromLTRB(15, 0, 15, 0),
+                                          child: Text(
+                                            snapshot.data[index].title
+                                                .toUpperCase(),
+                                            style: GoogleFonts.poppins(
+                                                fontSize: 9,
+                                                color: Color(0XFFFFFFFF),
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                        ),
                                       ),
                                     ),
                                   ),
                                 ),
                               ),
-                            ),
-                            SizedBox(
-                              height: 13.0,
-                            )
-                          ],
+                              SizedBox(
+                                height: 13.0,
+                              )
+                            ],
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
-              );
-            } else {
-              return Center(child: CircularProgressIndicator());
-            }
-          },
+                );
+              } else {
+                return Center(child: CircularProgressIndicator());
+              }
+            },
+          ),
+          backgroundColor: Colors.transparent,
         ),
-        backgroundColor: Color(0xFF1F2430),
       ),
     );
   }
-}
-
-Widget titulo(BuildContext context) {
-  return Column(
-    children: <Widget>[
-      Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Container(
-            child: Text('EDU',
-                style: GoogleFonts.bangers(
-                    fontSize: 40, color: Color(0XFFFF6B3D))),
-          ),
-          Container(
-            child: Text(
-              ' PAUEE',
-              style: GoogleFonts.bangers(
-                fontSize: 40,
-                color: Color(0xFFFFFFFF),
-              ),
-            ),
-          ),
-        ],
-      ),
-    ],
-  );
 }
 
 class ImagenCafe2 extends StatelessWidget {
@@ -145,6 +139,21 @@ class ImagenCafe2 extends StatelessWidget {
         width: 345,
         height: 157,
       ),
+    );
+  }
+}
+
+class Imagen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    AssetImage assetImage = AssetImage('assets/images/appbarlogo.png');
+    Image image = Image(
+      image: assetImage,
+      width: 335,
+      height: 55,
+    );
+    return Container(
+      child: image,
     );
   }
 }

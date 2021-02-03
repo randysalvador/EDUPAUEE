@@ -11,25 +11,34 @@ class About extends StatefulWidget {
 class _AboutState extends State<About> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        title: titulo(context),
-        backgroundColor: Color(0xFF1F2430),
-        elevation: 0,
+    return Container(
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage("assets/images/FondoEdu.png"),
+          fit: BoxFit.cover,
+        ),
       ),
-      body: ListView(
-        children: [
-          Column(
-            children: <Widget>[
-              miCard(),
-              miCardDesign(),
-              miCardDesign2(),
-            ],
+      child: Scaffold(
+        appBar: AppBar(
+          automaticallyImplyLeading: false,
+          backgroundColor: Colors.transparent,
+          shadowColor: Colors.transparent,
+          flexibleSpace: Container(
+            alignment: Alignment.bottomCenter,
+            child: Imagen(),
           ),
-        ],
+        ),
+        body: ListView(
+          children: [
+            Column(
+              children: <Widget>[
+                miCard(),
+              ],
+            ),
+          ],
+        ),
+        backgroundColor: Colors.transparent,
       ),
-      backgroundColor: Color(0xFF1F2430),
     );
   }
 }
@@ -143,4 +152,19 @@ Widget titulo(BuildContext context) {
       ),
     ],
   );
+}
+
+class Imagen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    AssetImage assetImage = AssetImage('assets/images/appbarlogo.png');
+    Image image = Image(
+      image: assetImage,
+      width: 335,
+      height: 55,
+    );
+    return Container(
+      child: image,
+    );
+  }
 }

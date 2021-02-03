@@ -35,7 +35,7 @@ class _homepageState extends State<Homepage> {
           ));
         },
         child: Material(
-          color: Color(0xFFE7503B),
+          color: Color(0xFF9B2242),
           elevation: 10.0,
           borderRadius: BorderRadius.circular(20.0),
           child: Container(
@@ -98,23 +98,31 @@ class _homepageState extends State<Homepage> {
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations(
         [DeviceOrientation.portraitDown, DeviceOrientation.portraitUp]);
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Color(0xFF1F2430),
-        title: Text(
-          "QuizSedener",
-          style: TextStyle(
-            fontFamily: "Quando",
-          ),
+    return Container(
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage("assets/images/fondoBEDU.png"),
+          fit: BoxFit.cover,
         ),
       ),
-      body: ListView(
-        children: <Widget>[
-          customcard("Energía renovable", images[0], des[0]),
-          customcard("Reciclaje", images[1], des[1]),
-        ],
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Color(0xFF9B2242),
+          title: Text(
+            "QuizSedener",
+            style: TextStyle(
+              fontFamily: "Quando",
+            ),
+          ),
+        ),
+        body: ListView(
+          children: <Widget>[
+            customcard("Energía renovable", images[0], des[0]),
+            customcard("Reciclaje", images[1], des[1]),
+          ],
+        ),
+        backgroundColor: Colors.transparent,
       ),
-      backgroundColor: Color(0xFF1F2430),
     );
   }
 }

@@ -20,19 +20,29 @@ class _JuegosState extends State<JuegosC> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        title: titulo(context),
-        backgroundColor: Color(0xFF1F2430),
-        elevation: 0,
+    return Container(
+      decoration: BoxDecoration(
+          image: DecorationImage(
+        image: AssetImage("assets/images/fondoBEDU.png"),
+        fit: BoxFit.cover,
+      )),
+      child: Scaffold(
+        appBar: AppBar(
+          automaticallyImplyLeading: false,
+          backgroundColor: Colors.transparent,
+          shadowColor: Colors.transparent,
+          flexibleSpace: Container(
+            alignment: Alignment.bottomCenter,
+            child: Imagen(),
+          ),
+        ),
+        body: ListView(
+          children: [
+            customcard(images[2]),
+          ],
+        ),
+        backgroundColor: Colors.transparent,
       ),
-      body: ListView(
-        children: [
-          customcard(images[2]),
-        ],
-      ),
-      backgroundColor: Color(0xFF1F2430),
     );
   }
 
@@ -105,6 +115,21 @@ class _JuegosState extends State<JuegosC> {
           ),
         ),
       ),
+    );
+  }
+}
+
+class Imagen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    AssetImage assetImage = AssetImage('assets/images/appbarlogo.png');
+    Image image = Image(
+      image: assetImage,
+      width: 335,
+      height: 55,
+    );
+    return Container(
+      child: image,
     );
   }
 }
